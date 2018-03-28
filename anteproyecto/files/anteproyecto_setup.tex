@@ -1,0 +1,56 @@
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=4.00cm, right=3.00cm, top=3.00cm, bottom=3.00cm]{geometry}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{makecell}
+\usepackage{lipsum}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\author{Jose Fernando Morales De Leon}
+\title{AUTOMATIZACIÓN DE CAPTURA DE DATOS DE TEMPERATURA CON ARDUINO PARA LA EMPRESA SIGCSA}
+\titleformat*{\section}{\normalsize\bfseries\centering}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
+
+\renewcommand{\labelenumiii}{\theenumiii}
+\renewcommand{\theenumiii}{\theenumii \arabic{enumiii}.}
+
+
+\renewcommand{\contentsname}{INDICE}
+
+%Personalizamos el indice%
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\l@section{%
+	\nobreak\hfil\nobreak
+}{%
+	\nobreak
+	\leaders\hbox{%
+		$\m@th \mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$%
+	}%
+	\hfill
+	\nobreak
+}{}{\errmessage{\noexpand\l@section could not be patched}}
+\makeatother
+
+\setcounter{secnumdepth}{0}
+
+\newcommand{\fakesection}[1]{%
+	\par\refstepcounter{section}% Increase section counter
+	\sectionmark{#1}% Add section mark (header)
+	\addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}% Add section to ToC
+	% Add more content here, if needed.
+}
+
+\usepackage{pdflscape}
