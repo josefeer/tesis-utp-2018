@@ -1,8 +1,8 @@
 .idea
-.aux
-.log
-.bcf
-.idx
-.synctex.gz
-.pdf
-.toc
+*.aux
+*.log
+*.bcf
+*.idx
+*.synctex.gz
+*.pdf
+*.toc
