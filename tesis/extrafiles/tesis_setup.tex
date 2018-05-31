@@ -16,18 +16,19 @@
 \usepackage{textcomp}
 \usepackage{wrapfig}
 \usepackage{float}
-
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
 
 
 \author{Jose Fernando Morales De Leon}
 
-\title{CAPITULO 2}
+\title{TESIS}
 
 %\titleformat{\chapter}[display]
 %{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 
 \titleformat{\chapter}[display]
-{\normalfont\huge\bfseries}{}{20pt}{\Huge}
+{\normalfont\huge\bfseries}{Capítulo \thechapter}{20pt}{\Huge}
 
 \titleformat{\section}
 {\normalfont\Large\bfseries}{\thesection}{1em}{}
@@ -51,6 +52,15 @@
 \setlength{\parindent}{2em}
 \setlength{\parskip}{1em}
 
-\graphicspath{ {C:/Users/josefernando/Gits/tesismorales2018/tesis/cap2files/imagenes/} }
+\graphicspath{ {C:/Users/josefernando/gits/tesismorales2018/tesis/files/images/cap1/}
+{C:/Users/josefernando/gits/tesismorales2018/tesis/files/images/cap2/}
+ }
 
-\renewcommand{\figurename}{Fig.}
+\renewcommand{\figurename}{Figura.}
+\renewcommand\bibname{Referencias}
+\renewcommand{\contentsname}{Índice general}
+\renewcommand{\listfigurename}{Lista de Figuras}
+
+\pagestyle{fancy}
+\lhead{\thepage}
+\rhead{\leftmark}

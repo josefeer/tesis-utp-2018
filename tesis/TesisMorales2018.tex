@@ -1,0 +1,30 @@
+\documentclass[12pt, letterpaper, titlepage, oneside]{book}
+\input{extrafiles/tesis_setup}
+\input{extrafiles/word_breaks}
+
+\begin{document}
+
+	\frontmatter
+	\pagenumbering{Roman}
+	
+	%INDICE%
+	\tableofcontents
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{\listfigurename}
+	
+	%LISTA DE FIGURAS%
+	\listoffigures
+	
+	
+	%TESIS%
+	\mainmatter
+	\pagenumbering{arabic}
+	
+	\input{files/capitulo1}
+	
+	\input{files/capitulo2}
+	
+	%BIBLIOGRAFIA%
+	\input{files/bibliography}
+	
+\end{document}
