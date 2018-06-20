@@ -27,13 +27,10 @@ Arduino nació en el Ivrea Interaction Design Institute como una herramienta fá
 	\caption{Placa Arduino Nano}
 \end{figure}
 
-\subsubsection{Módulos Arduino}
-
-\par
-Los módulos de Arduino son esencialmente placas de circuitos independientes que integran uno o múltiples circuitos integrados, sensores, pantallas LCD, componentes electrónicos y una interfaz de pines para una comunicación sencilla con la placa Arduino. Los módulos nos permiten agregar funcionalidad a nuestra placa arduino y son como piezas de un rompecabezas donde el resultado final es el prototipo deseado.
+\subsubsection{Componentes Pasivos}
 
 \par \noindent
-Los componentes electrónicos principales son los siguientes:
+Los componentes pasivos principales son los siguientes:
 
 \paragraph{Resistencia}
 Son usados para establecer corrientes de operación y niveles de señal. Resistencias se utilizan en los circuitos de alimentación para reducir los voltajes al disipar la potencia, medir las corrientes y descargar los capacitores después de que se desconecta la energía. Una resistencia está hecha de elementos conductores (carbono, o una película delgada de metal o carbono, o un cable de baja conductividad), con un cable o contactos en cada extremo\cite{artofelectronics}. Se caracteriza por su resistencia y es definido por:
@@ -46,7 +43,7 @@ $$R = V/I$$
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=8cm, height=6cm]{resistor1.png}
+	\includegraphics[width=6cm, height=4cm]{resistor1.png}
 	\caption{Ejemplo de Resistor y Simbología}
 \end{figure}
 
@@ -89,6 +86,11 @@ Al igual que con los capacitores, la energía invertida en el aumento de la corr
 \par \noindent
 Ya definidos los componentes electricos que componen los modulos de arduino procedemos a explicar los dos modulos utilizados en este proyecto \cite{artofelectronics}.
 
+\subsubsection{Módulos Arduino}
+
+\par
+Los módulos de Arduino son esencialmente placas de circuitos independientes que integran uno o múltiples circuitos integrados, sensores, pantallas LCD, componentes electrónicos y una interfaz de pines para una comunicación sencilla con la placa Arduino. Los módulos nos permiten agregar funcionalidad a nuestra placa arduino y son como piezas de un rompecabezas donde el resultado final es el prototipo deseado.
+
 \clearpage
 
 \paragraph{Modulo Bluetooth HC-05}
@@ -125,5 +127,47 @@ La alta velocidad de datos de aire combinada con dos modos de ahorro de energía
 diseños de energía\cite{nrf}.
 
 \par \noindent
-Los modulos previamente mencionados son elementos indispensables para enviar y recibir información entre nuestro prototipo y la aplicación móvil. El prototipo debe ser capaz de capturar mediciones de temperatura de manera precisa; por ende se requiere un sensor eficaz y eficiente.
+Nuestro prototipo debe ser capaz de visualizar la información capturada y enviarla a nuestra aplicación movil. 
+Los modulos previamente mencionados son los encargados de la comunicación inalambrica y una pantalla LCD es la encargada de reflejar la información en tiempo real al usuario final; no obstante, primero debemos tener una lista de pantallas LCD cantidatas.
+
+\subsubsection{Pantallas LCD}
+
+Una pantalla LCD (Liquid Crystal Display, en inglés) es una pantalla delgada y plana formada por un número de píxeles en color o monocromos colocados delante de una fuente de luz o reflectora. A menudo se utiliza en dispositivos electrónicos de pilas, ya que utiliza cantidades muy pequeñas de energía eléctrica\cite{lcd}. Adicional las pantallas LCD deben utilizar un controlador, usualmente un circuito integrado, para poder comunicarse con las placas arduino. 
+
+\paragraph{LCM-1602}
+
+La pantalla LCM-1602 es una pantalla clasica en proyecto de arduino. El LCM-1602 cuenta con una luz de fondo LED de color amarillo y requiere de una conexión de 5V, que puede proporcionar la mayoría de las placas arduino. 
+
+\clearpage
+
+Lastimosamente solamente es capaz de visualizar 16 caracteres monocromaticos por línea, la pantalla cuenta con 2 líneas, reflejando un total de solamente 32 caracteres por líneas\cite{lcm}. Se recomienda utilizar un controlador externo para poder conectar la pantalla con arduino; sino, se requerirían mucho mas conexiónes fisicas para la conexíon con arduino, ver figura 2.12. Las medidas fisicas de esta pantalla, hace dificil implementarla en prototipos donde el espacio esta comprometido.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{lcd1.jpg}
+	\caption{Pantalla LCM-1602, junto con IC para mejor integración con arduino.}
+\end{figure}
+
+\paragraph{NOKIA 5110}
+Esta pantalla LCD es la misma utilizada por el celular Nokia 5110 o Nokia 3310, ver figura 2.13 , de allí su nombre\cite{nokia1}. 
+Sin embargo Phillips, competencia de Nokia hace años atras, es el fabricante del controlador de esta pantalla LCD, el PCD8544. Phillips indica que esta pantalla tiene una resolución de 48x84 pixeles; siendo esta pantalla mas pequeña que el LCM-1602 pero con mayor capacidad de visualizar caracteres\cite{nokia2}. Debe ser alimentado por 3.3V exclusivamente, de ser alimentado con 5V se daña el controlador, y viene integrado con luces de fondo LED\cite{nokia2}. El unico incoveniente de esta pantalla viene siendo su tamaño compacto; ya que, la visualización de la información es muy pequeña.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.35\linewidth]{lcd2.jpg}
+	\caption{LCD Nokia 5110 con placa para una mejor intregración con arduino.}
+\end{figure}
+
+\paragraph{LCD TFT ILI9341}
+La pantalla LCD ILI9341 es llamado después del controlador que es utilizado para poder comunicarse con ella. Tiene versiones de 2.2, 2.4, 2.8 y 3.2 pulgadas. La pantalla ILI9341 debe ser alimentada con 5V, junto con la luz de fondo led; no obstante, el controlador utiliza una logica de 3.3V; tiene una resolución de 240x320 pixeles y es una pantalla multicolor, excelente para dispositivo de tamaño pequeño o mediano donde una larga duración de la bateria es indispensable\cite{ili9341}. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{lcd3.jpg}
+	\caption{ILI9341 de 2.8 pulgadas con placa para mejor integración con arduino.}
+\end{figure} 
+
+\par \noindent
+Las pantalla LCD es importante, en nuestro prototipo, porque son el principal medio de comunicación entre el prototipo y el usuario final. El ultimo punto es que el prototipo debe ser capaz de capturar mediciones de temperatura de manera precisa; por ende se requiere un sensor eficaz y eficiente.
+
 

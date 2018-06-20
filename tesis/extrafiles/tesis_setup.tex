@@ -21,6 +21,7 @@
 \usepackage{bookmark}
 \usepackage[page,toc]{appendix}
 \usepackage{pdfpages}
+\usepackage{listings}
 
 
 \author{Jose Fernando Morales De Leon}
@@ -55,7 +56,7 @@
 \setlength{\parindent}{2em}
 \setlength{\parskip}{1em}
 
-\graphicspath{ {files/images/cap1/}{files/images/cap2/}{files/images/cap3/}
+\graphicspath{ {files/images/cap1/}{files/images/cap2/}{files/images/cap3/}{files/images/presentacion/}{files/images/cap4/}
  }
 
 \renewcommand{\figurename}{Figura.}
@@ -72,3 +73,10 @@
 \pagestyle{fancy}
 \lhead{\thepage}
 \rhead{\leftmark}
+
+\lstdefinestyle{mystyle}{                
+	tabsize=2,
+	frame=single
+}
+
+\lstset{style=mystyle}

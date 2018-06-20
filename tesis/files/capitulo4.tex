@@ -1,12 +1,28 @@
-\documentclass[12pt,letterpaper,titlepage,oneside]{book}
-\input{extrafiles/tesis_setup}
+\chapter{Diseño y Desarrollo del Prototipo}
+\par 
+El siguiente capítulo hablaremos de los pasos a seguir para la elaboración del prototipo de dispositivo de medición de temperatura. Elegiremos ciertos componentes mencionados en el marco teórico; ya que cumplen con ciertas caracteristicas que necesitamos o simplemente porque presentan un mayor valor agregado al prototipo. El principal componente de nuestro prototipo es nuestra placa Arduino la cual brinda compontentes adicionales a el microcontrolador como un regulador de voltaje y un convertidor serial a USB, muy util al momento de programar nuestro prototipo. Otras de las razones por la cual utilizamos Arduino son\cite{arduino-intro}:
 
-\begin{document}
+\begin{itemize}
+	\item Económico: 
+	Las placas Arduino son relativamente económicas en comparación con otras plataformas de microcontroladores. La versión menos costosa del módulo Arduino se puede ensamblar a mano, e incluso los módulos Arduino premontados cuestan menos de \$50.
 	
-	\include{cap4files/sections/prototipocircuitotermometro}
+	\item Multiplataforma: El software Arduino (IDE) se ejecuta en sistemas operativos Windows, Macintosh OSX y Linux. La mayoría de los sistemas de microcontroladores están limitados a Windows.
 	
-	\include{cap4files/sections/firmware}
+	\item Ambiente de Programación Sencilla: El software Arduino (IDE) es fácil de usar para principiantes, pero lo suficientemente flexible como para que los usuarios avanzados puedan aprovecharlo también. Para los maestros, está convenientemente basado en el entorno de programación de Procesamiento, por lo que los estudiantes que aprenden a programar en ese entorno estarán familiarizados con el funcionamiento del IDE de Arduino, adicional el lenguaje de programación es muy parecida a la C++.
 	
-	\include{cap4files/sections/interfaz}
+	\clearpage
 	
-\end{document}
+	\item Software Extensible: El software Arduino se publica como herramientas de código abierto, disponibles para la extensión por programadores experimentados. El lenguaje puede expandirse a través de bibliotecas C ++, y las personas que quieran comprender los detalles técnicos pueden dar el salto de Arduino al lenguaje de programación AVR C en el que se basa. Del mismo modo, puede agregar código AVR-C directamente en sus programas Arduino si así lo desea.
+	
+	\item Hardware Extensible: 
+	Los planes de las placas Arduino se publican bajo una licencia de Creative Commons, por lo que los diseñadores de circuitos experimentados pueden hacer su propia versión del módulo, ampliarlo y mejorarlo. Incluso los usuarios relativamente inexpertos pueden construir la versión del módulo para comprender cómo funciona y ahorrar dinero.
+\end{itemize}
+
+\par \noindent
+Una vez hayamos probado todos los módulos individualmente para corroborar su funcionamiento. Desarrollamos un solo firmware para poder interarticular con todos los módulos a la vez. 
+
+\par \noindent
+Por ultimo diseñamos un esquematico y placa; soldaremos los componentes pasivos, modulos y placa arduino, valga la redundancia y diseñaremos e imprimiremos en una impresora 3D el armazón del prototipo.
+
+\input{files/cap4files/sections/pcompypcir}
+
