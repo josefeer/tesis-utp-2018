@@ -370,3 +370,64 @@ La segunda parte básicamente el Arduino está a la espera de recibir a través 
 El módulo nRF24L01+ brinda gran valor para nuestro prototipo por su poco precio; sin embargo, la característica que falta es enviar la información de todos los sensores a nuestro smartphone. Aquí es donde necesitamos el módulo bluetooth HC-05.  
 
 \subsubsection{Módulo Bluetooth HC-05}
+\par
+El módulo Bluetooth HC-05 es un clásico en los circuitos de Arduino. Hoy en día todavía se sigue utilizando ya que las versiones de bluetooth son retrocompatibles. El módulo utiliza la versión de bluetooth 2.0 y hay vasta documentación del módulo en cuestión en la internet. Lo hay que tomar en cuenta para trabajar con este módulo son dos cosas: el módulo necesita una alimentación entre 3.6 a 6 V para funcionar y sus pines de comunicación RXD y TXD lastimosamente no toleran una lógica de 5V; por lo qué, hay que utilizar un divisor de voltaje con resistencias. Utilizaremos resistencias de 100K ohmios y 200K ohmios para convertir los 5V del Arduino a 3.3V, esto es solo necesario para transmitir del Arduino al HC-05. Para trasmitir del HC-05 al Arduino no es necesario de convertir de 3.3V a 5V. La conexión del HC-05 con el Arduino sería así:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{pruebas8.png}
+	\caption{Conexión de Arduino y HC-05}
+\end{figure} 
+
+\par \noindent
+Utilizamos los pines A4 y A5, recordemos que estos pines análogos puedes ser utilizados como pines digitales. Adicional un capacitor de 10 uF para brindar una fuente de poder estable.
+
+\par \noindent
+Ahora para programar el Arduino para comunicarse con el módulo hay que utilizar la librería "SoftwareSerial", es una de las librerías por defecto de Arduino, nos permite utilizar pines digitales como puertos seriales adicionales. Esto permite una comunicación bilateral entre el Arduino y el HC-05. El código ejemplo que hemos desarrollado es muy sencillo.
+
+\clearpage
+
+\begin{lstlisting}[language=C++, caption={Codigo Ejemplo para módulo HC-05}, captionpos=b]
+#include <Arduino.h>
+#include <SoftwareSerial.h>
+SoftwareSerial BTserial(18, 19); // RX | TX
+
+String json ="{\r\n\"S1\":\"24.56\",
+\r\n\"S2\":\"28.10\"\r\n}\r\n";
+
+void setup() {
+Serial.begin(9600);
+BTserial.begin(9600);  
+}
+
+void loop() {
+BTserial.println(json); 
+Serial.println("Sent.."); 
+delay(1000); 
+}
+\end{lstlisting} 
+
+\par \noindent
+En el código ejemplo 4.4 se crea una instancia de la clase SoftwareSerial. Esta clase actúa más como una interfaz y crea una comunación serial en los pines seleccionados. Siendo el primer parametro el pin de recepción y el segundo parametro el pin de transmisión. Creamos una variables tipo "string" en el cual simulamos un texto en formato JSON. En la función "setup" iniciamos la comunicación con el puerto serial por defecto del Arduino "Serial" y empezamos tambien la comunicación a través de los pines 18 y 19 por la instancia "BTSerial". En la función "loop" imprimimos la variable JSON utilizando "BTSerial", donde el HC-05 imprime el valor de la variable JSON. Imprimimos por el puerto serial por defecto solamente para validar que el Arduino esta funcionando y por ultimo ejecutamos la funcion "delay" la cual detiene la ejecución del código por el tiempo que se encuentra en el parametro de la función, la unidad de la función "delay" es mili segundos. 
+
+\par \noindent
+Para validar que la información se esta enviando por bluetooth. Utilizaremos nuestro smartphone durante el desarrollo de este prototipo el smartphone que usaremos es el Samsung Galaxy S5. Descargaremos la aplicación "Bluetooth Terminal"\cite{btterminal} del Play Store de Android. Esta aplicación es una aplicación de terminal y puede realizar transacciones entre el smartphone y el dispositivo bluetooth\cite{btterminal}, en este caso el HC-05.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{pruebas7.png}
+	\caption{Resultado del código ejemplo 4.4, utilizando la aplicación "Bluetooth Terminal" en Android.}
+\end{figure}
+
+\par \noindent
+Una vez validado como programar, conectar y manipular correctamente los componentes necesarios para la elaboración de nuestro prototipo. Es momento de integrarlos para el desarrollo de una firmware (código) para el manejo de todos los componentes de manera simultanea por un Arduino. Por lo que es momento de realizar un circuito tentativo de nuestro prototipo.
+
+\subsubsection{Circuito Tentativo}
+\par 
+El circuito tentativo de nuestro dispositivo es una combinación de todos los componentes seleccionados en un solo circuito. El componente principal es el Arduino Nano y es donde subiremos el firmware del dispositivo. El Esquemático del circuito tentativo del prototipo es el siguiente:
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{circuitotentativo2.png}
+	\caption{Version 1.1 del Circuito del Prototipo de Medición de Temperatura.}
+\end{figure}
