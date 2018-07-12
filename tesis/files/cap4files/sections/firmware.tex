@@ -1,1 +1,500 @@
 \section{Desarrollo de Firmware}
+\par 
+El firmware o soporte lógico inalterable es un programa informático que establece la lógica de más bajo nivel que controla los circuitos electrónicos de un dispositivo de cualquier tipo. Está fuertemente integrado con la electrónica del dispositivo, es el software que tiene directa interacción con el hardware, siendo así el encargado de controlarlo para ejecutar correctamente las instrucciones externas.\cite{firmware}
+
+\par \noindent
+Para el desarrollo del firmware de nuestro prototipo utilizamos las librerías previamente descritas en las pruebas individuales de los componentes con Arduino. Dando como el resultado nuestro firmware en su primera versión.
+
+\begin{lstlisting}[language=C++, caption={Firmware de nuestro prototipo en su versión 1.0}, captionpos=b, basicstyle=\small]
+#include <Arduino.h>
+
+/*RF Libraries*/
+#include <DigitalIO.h>
+#include <SPI.h>
+#include "RF24.h"
+
+/*Temp Sensor Libraries*/
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
+/*Bluetooth Library*/
+#include <SoftwareSerial.h>
+
+/*ILI9341 Library*/
+#include <Adafruit_ILI9341.h>
+
+/*Constants Temp Sensor*/
+const int ONE_WIRE_BUS = 6;
+
+/*Constants RF*/
+const int radioID = 0;
+const int Group1 = 76;
+const int Group2 = 115;
+
+/*Constants ILI9341*/
+#define TFT_DC 9
+#define TFT_CS 7
+#define TFT_RST 8
+#define TFT_MISO 12
+#define TFT_MOSI 11
+#define TFT_CLK 13
+
+/*RF CONFIG*/
+RF24 Radio(4,5);
+byte addresses[][6] = {"1Node","2Node", "3Node", "4Node", 
+"5Node", "6Node", "7Node", "8Node", "9Node"};
+
+/*Temp Sensor CONFIG*/
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);
+
+/*Bluetooth CONFIG*/
+SoftwareSerial BTserial(18, 19); // RX | TX
+
+/*ILI9341 CONFIG*/
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, 
+TFT_MOSI, TFT_CLK, TFT_RST, TFT_MISO);
+
+/*Global Variables*/
+struct sensors{
+	float s1 = -127.00;
+	float s2 = -127.00;
+	float s3 = -127.00;
+	float s4 = -127.00;
+	float s5 = -127.00;
+	float s6 = -127.00;
+	float s7 = -127.00;
+	float s8 = -127.00;
+	float s9 = -127.00;
+} values;
+
+struct mainjson{
+	String s1;
+	String s2;
+	String s3;
+	String s4;
+	String s5;
+	String s6;
+	String s7;
+	String s8;
+	String s9;
+} values2BT;
+
+struct NodeResponse{
+	int nodeID;
+	float value;
+} RFnode, package;
+
+float sensortemp;
+float previoustemp = -150.00;
+float maxtemp = -2000.00;
+float mintemp = 2000.00;
+float errortemp = -127.00;
+
+String BTjson = "{\r\n\"S1\":\""+values2BT.s1+
+"\",\r\n\"S2\":\""+values2BT.s2+
+"\",\r\n\"S3\":\""+values2BT.s3+
+"\",\r\n\"S4\":\""+values2BT.s4+
+"\",\r\n\"S5\":\""+values2BT.s5+
+"\",\r\n\"S6\":\""+values2BT.s6+
+"\",\r\n\"S7\":\""+values2BT.s7+
+"\",\r\n\"S8\":\""+values2BT.s8+
+"\",\r\n\"S8\":\""+values2BT.s9+
+"\r\n}";
+
+
+/*Functions*/
+void PingPongG1(){
+	Radio.setChannel(Group1);
+	int currentRadioID;
+	bool ping = true;
+	
+	for(currentRadioID = 1; currentRadioID < 4; currentRadioID++){
+		Radio.openWritingPipe(addresses[currentRadioID]);
+		Radio.openReadingPipe(currentRadioID, addresses[0]);
+		Radio.stopListening();
+		delay(50);
+		
+		if(!Radio.write(&ping, sizeof(ping))){
+			Serial.println("failed reach radioID: "
+			+String(currentRadioID+1));
+		}
+		
+		Radio.txStandBy();
+		Radio.startListening();
+		unsigned long started_waiting_at = micros();
+		bool timeout = false;
+		
+		while(!Radio.available()){
+			if(micros() - started_waiting_at > 200000){
+				timeout = true;
+				break;
+			}
+		}
+		
+		if(timeout){
+			Serial.println("failed, request timeout");
+		}
+		else{
+			Radio.read(&RFnode, sizeof(RFnode));
+			switch(RFnode.nodeID){
+				case 2:
+				values.s2 = RFnode.value;
+				break;
+				case 3:
+				values.s3 = RFnode.value;
+				break;
+				case 4:
+				values.s4 = RFnode.value;
+				break;
+				case 5:
+				values.s5 = RFnode.value;
+				break;
+				default:
+				Serial.println("RFnode value error");
+				break;
+			}
+		}
+	
+	}
+
+}
+
+void PongPingG1(NodeResponse package){
+	Radio.setChannel(Group1);
+	
+	switch(radioID){
+		case 2:
+		Radio.openReadingPipe(1,addresses[1]);
+		Radio.openWritingPipe(addresses[0]);
+		Serial.println("radioID 2, pipes open!");
+		break;
+		
+		case 3:
+		Radio.openReadingPipe(2, addresses[2]);
+		Radio.openWritingPipe(addresses[0]);
+		Serial.println("radioID 3, pipes open!");
+		break;
+		
+		case 4:
+		Radio.openReadingPipe(3,addresses[3]);
+		Radio.openWritingPipe(addresses[0]);
+		Serial.println("radioID 4, pipes open!");
+		break;
+		
+		case 5:
+		Radio.openReadingPipe(4,addresses[4]);
+		Radio.openWritingPipe(addresses[0]);
+		Serial.println("radioID 5, pipes open!");
+		break;
+		
+		default:
+		Serial.println("radioID error");
+		break;
+	}
+	
+	if(Radio.available()){
+		bool ping = false;
+		
+		while(Radio.available()){
+			Radio.read(&ping, sizeof(ping));
+		
+		}
+		if(ping == true){
+			Radio.stopListening();
+			Radio.write(&package, sizeof(package));
+			Radio.txStandBy();
+			Radio.startListening();
+		}
+		else{
+			Serial.println("ping failed!");
+		}
+		
+	}
+
+}
+
+void PingPongG2(){
+	Radio.setChannel(Group2);
+	int currentRadioID;
+	bool ping = true;
+	
+	for(currentRadioID = 5; currentRadioID < 9; currentRadioID++){
+		Radio.openWritingPipe(addresses[currentRadioID]);
+		Radio.openReadingPipe(currentRadioID-4, addresses[0]);
+		Radio.stopListening();
+		delay(50);
+		
+		if(!Radio.write(&ping, sizeof(ping))){
+			Serial.println("failed reach radioID: "
+			+String(currentRadioID+1));
+		}
+		
+		Radio.txStandBy();
+		Radio.startListening();
+		unsigned long started_waiting_at = micros();
+		bool timeout = false;
+		
+		while(!Radio.available()){
+			if(micros() - started_waiting_at > 200000){
+				timeout = true;
+				break;
+			}
+		}
+		
+		if(timeout){
+			Serial.println("failed, request timeout");
+		}
+		else{
+			Radio.read(&RFnode, sizeof(RFnode));
+			switch(RFnode.nodeID){
+				case 6:
+				values.s6 = RFnode.value;
+				break;
+				case 7:
+				values.s7 = RFnode.value;
+				break;
+				case 8:
+				values.s8 = RFnode.value;
+				break;
+				case 9:
+				values.s9 = RFnode.value;
+				break;
+				default:
+				Serial.println("RFnode value error");
+				break;
+			}
+		}
+		
+	}
+
+}
+
+void PongPingG2(NodeResponse package){
+	Radio.setChannel(Group2);
+	
+	switch(radioID){
+		case 6:
+		Radio.openReadingPipe(1,addresses[5]);
+		Radio.openWritingPipe(addresses[0]);
+		Serial.println("radioID 6, pipes open!");
+		break;
+		
+		case 7:
+		Radio.openReadingPipe(2, addresses[6]);
+		Radio.openWritingPipe(addresses[0]);
+		Serial.println("radioID 7, pipes open!");
+		break;
+		
+		case 8:
+		Radio.openReadingPipe(3,addresses[7]);
+		Radio.openWritingPipe(addresses[0]);
+		Serial.println("radioID 8, pipes open!");
+		break;
+		
+		case 9:
+		Radio.openReadingPipe(4,addresses[8]);
+		Radio.openWritingPipe(addresses[0]);
+		Serial.println("radioID 9, pipes open!");
+		break;
+		
+		default:
+			Serial.println("radioID error");
+			break;
+	}
+	
+	if(Radio.available()){
+		bool ping = false;
+		
+		while(Radio.available()){
+			Radio.read(&ping, sizeof(ping));
+		
+		}
+		if(ping == true){
+			Radio.stopListening();
+			Radio.write(&package, sizeof(package));
+			Radio.txStandBy();
+			Radio.startListening();
+		}
+		else{
+			Serial.println("ping failed!");
+		}
+	
+	}
+
+}
+
+NodeResponse makepackage(float value){
+	package.nodeID = radioID;
+	package.value = value;
+	
+	return package;
+}
+
+void updateBTjson(){
+	values2BT.s1 = String(String(values.s1));
+	values2BT.s2 = String(values.s2);
+	values2BT.s3 = String(values.s3);
+	values2BT.s4 = String(values.s4);
+	values2BT.s5 = String(values.s5);
+	values2BT.s6 = String(values.s6);
+	values2BT.s7 = String(values.s7);
+	values2BT.s8 = String(values.s8);
+	values2BT.s9 = String(values.s9);
+	
+	BTjson = "{\r\n\"S1\":\""+values2BT.s1+
+	"\",\r\n\"S2\":\""+values2BT.s2+
+	"\",\r\n\"S3\":\""+values2BT.s3+
+	"\",\r\n\"S4\":\""+values2BT.s4+
+	"\",\r\n\"S5\":\""+values2BT.s5+
+	"\",\r\n\"S6\":\""+values2BT.s6+
+	"\",\r\n\"S7\":\""+values2BT.s7+
+	"\",\r\n\"S8\":\""+values2BT.s8+
+	"\",\r\n\"S9\":\""+values2BT.s9+
+	"\r\n}";
+
+}
+
+void screenprint(String text, int color, int x, 
+int y, int size){
+
+	tft.setCursor(x,y);
+	tft.setTextSize(size);
+	tft.setTextColor(color);
+	tft.println(text);
+}
+
+void startscreen(){
+	tft.begin();
+	tft.setRotation(0);
+	tft.fillScreen(ILI9341_BLACK);
+	
+	/*Base GUI*/
+	tft.drawFastHLine(0,75, 240, ILI9341_WHITE);
+	screenprint("Unit:", ILI9341_DARKGREY, 10, 90,2);
+	tft.drawCircle(80,90,3, ILI9341_CYAN);
+	screenprint("C", ILI9341_CYAN, 90, 90, 2);
+	tft.drawFastVLine(120, 75, 40, ILI9341_WHITE);
+	screenprint("ID:", ILI9341_DARKGREY ,130, 90, 2);
+	screenprint("S"+String(radioID), ILI9341_CYAN, 175, 90, 2);
+	tft.drawFastHLine(0,115, 240, ILI9341_WHITE);
+	screenprint("TEMPERATURE", ILI9341_DARKGREY, 20, 130, 3);
+	screenprint("--.--", ILI9341_WHITE, 50, 180, 4);
+	tft.drawFastHLine(0,240, 240, ILI9341_WHITE);
+	screenprint("MAX", ILI9341_RED, 37, 260, 2);
+	screenprint("--.--", ILI9341_WHITE, 22, 290, 2);
+	tft.drawFastVLine(120,240,80, ILI9341_WHITE);
+	screenprint("MIN", ILI9341_BLUE, 173, 260, 2);
+	screenprint("--.--", ILI9341_WHITE, 158, 290, 2);
+
+}
+
+
+/*MCU Functions*/
+void setup() {
+	Serial.begin(9600);
+	BTserial.begin(9600);
+	sensors.begin();
+	Radio.begin();
+	Radio.setPALevel(RF24_PA_HIGH);
+	Radio.setDataRate(RF24_250KBPS);
+	Radio.startListening();
+	startscreen();
+}
+
+void loop() {
+	sensors.requestTemperatures();
+	sensortemp = sensors.getTempCByIndex(0);
+	values.s1 = sensortemp;
+	Serial.println("CURRENT TEMP:"+String(sensortemp));
+	
+	if(radioID == 1){
+		PingPongG1();
+		delay(100);
+		PingPongG2();
+		updateBTjson();
+		Serial.println(BTjson);
+		BTserial.println(BTjson);
+		delay(400);
+	}
+	else{
+		if(radioID > 1 && radioID < 6){
+			RFnode = makepackage(sensortemp);
+			PongPingG1(RFnode);
+		}
+		else if(radioID > 5 && radioID < 10){
+			RFnode = makepackage(sensortemp);
+			PongPingG2(RFnode);
+		}
+		else{
+			Serial.println("Sent Error");
+		}
+			delay(200);
+	}
+	
+	if (sensortemp == errortemp) {
+		tft.fillRect(50,175,150,40,ILI9341_BLACK);
+		screenprint("ERROR", ILI9341_WHITE,57,180,4);
+	}
+	else{
+	
+		if (sensortemp != previoustemp) {
+			previoustemp = sensortemp;
+			
+			tft.fillRect(50,175,150,40,ILI9341_BLACK);
+			screenprint(String(sensortemp), ILI9341_WHITE,57,180,4);
+		}
+		
+		if(sensortemp > maxtemp){
+			maxtemp = sensortemp;
+			
+			tft.fillRect(8,280,90,28,ILI9341_BLACK);
+			screenprint(String(sensortemp), ILI9341_WHITE,15,290,2);
+		}
+		
+		if(sensortemp < mintemp){
+			mintemp = sensortemp;
+			
+			tft.fillRect(145,280,90,28,ILI9341_BLACK);
+			screenprint(String(sensortemp), ILI9341_WHITE,152,290,2);
+		}
+	
+	}
+
+}
+\end{lstlisting}
+
+\par \noindent
+El firmware de nuestro dispositivo consta de las siguientes funciones:
+\begin{itemize}
+	\item PingPongG1: Abre una tubería de comunicación en el canal de radio frecuencia del grupo 1 para el radioID 2, solicita información del sensor del radioID en cuestión. Si el radioID ha retornado una respuesta en menos de 200 milisegundos, entonces verificamos el radioID y asignamos el valor solicitado a a la variable correspondiente. En caso contrario se procede al siguiente radioID. La función se ejecuta para obtener los valores de los radioID 2, 3, 4 y 5. Esta función solo es ejecutada por el radioID 1.
+	
+	\item PongPingG1: Abre una tubería de comunicación  en el canal de radiofrecuencia del grupo 1 con el radioID 1 y procede a esperar recibir el llamado del radioID 1 para retornar el valor de su respectivo sensor. La función es ejecutada por los radioID 2, 3, 4 y 5.
+	
+	\item PingPonG2: Lo mismo que la función "PingPongG1"; con la excepción que utiliza un canal de radiofrecuencia diferente.
+	
+	\item PongPingG2: Lo mismo que la función "PongPingG1"; con la excepción que utiliza un canal de radiofrecuencia diferente.
+	
+	\item updateBTjson: Actualiza los valores de todos los sensores antes de ser enviados por bluetooth.
+	
+	\item screenprint: Simplifica imprimir un texto en la pantalla LCD ILI9341.
+	
+	\item startscreen: Define la interfaz de usuario base de la pantalla LCD del prototipo.
+	
+	\item makepackage: Prepara la variable "struct" a ser enviada por el radio.
+\end{itemize}
+
+\par \noindent
+Anteriormente se ha comentado que los microcontroladores Arduino requieren en su programación dos funciones principales: "setup" y "loop". 
+
+\par \noindent
+La función "setup" de nuestro prototipo inicializamos todos los componentes de nuestro prototipo. En la función "loop" empezamos llamando el valor de temperatura del sensor. Luego en una condición "if" validamos el ID de nuestro dispositivo. En caso tal de ser el 1 llamamos las funciones "PingPongG1" y "PingPongG2" para obtener los valores de los sensores de los otros prototipos. Se llama a la funcion "updateBTjson" para formatear correctamente los valores de los sensores para ser enviados por bluetooth y enviamos los valores por puerto serial y bluetooth. Por ultimo detenemos la ejecución del microcontrolador por 400 milisegundos.
+
+\par \noindent
+En caso de ser un ID entre 2 y 5, creamos una variable tipo "struct" llamada "RFnode" y le asignamos el valor retornado de la función "makepackage". Por ultimo la variable "RFnode" es enviada a la función "PongPingG1". En caso de ser un ID entre 6 y 9, se realizan los mismos pasos del párrafo anterior; pero, llamamos la función "PongPingG2". En caso tal de no contener un ID valido simplemente no se utiliza el módulo de radio ni el bluetooth.
+
+\par \noindent
+Por ultimo realizamos sentencias de control "if" para actualizar la pantalla LCD de nuestro prototipo y actualizamos en caso tal que el ultimo valor de temperatura es diferente al anterior. Adicional agregamos condiciones visualizar los valores máximos y mínimos de temperatura que a capturado el prototipo.
+
+\par \noindent
+Ahora ¿Que ocurre con lo que enviamos los valores por bluetooth? Sabemos que llegan a una aplicación android; pero, ¿Como son procesados esos datos? Para las respuestas necesitamos saber mas sobre la aplicación android.
