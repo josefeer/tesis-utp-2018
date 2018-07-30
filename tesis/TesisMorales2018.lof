@@ -41,3 +41,10 @@
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Conexi\IeC {\'o}n de Arduino y HC-05}}{70}{figure.4.6}
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Resultado del c\IeC {\'o}digo ejemplo 4.4, utilizando la aplicaci\IeC {\'o}n "Bluetooth Terminal" en Android.}}{72}{figure.4.7}
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Version 1.1 del Circuito del Prototipo de Medici\IeC {\'o}n de Temperatura.}}{73}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Animaci\IeC {\'o}n de inicio de la aplicaci\IeC {\'o}n; tambi\IeC {\'e}n conocido como "Splash Screen"}}{86}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Interfaz de la actividad principal}}{87}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Interfaz del Fragmento Recientes en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o}}{88}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Dise\IeC {\~n}o de interfaz para "ListView" del fragmento recientes y registros}}{89}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Interfaz del Fragmento A\IeC {\~n}adir en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o, parte 1}}{90}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Interfaz del Fragmento A\IeC {\~n}adir en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o, parte 2}}{91}{figure.4.14}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Dependiendo de la opci\IeC {\'o}n seleccionada, se ajustan los textos en la secci\IeC {\'o}n de "Estado del Sistema"}}{92}{figure.4.15}
