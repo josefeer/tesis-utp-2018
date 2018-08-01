@@ -96,3 +96,88 @@ En las opciones de tipo hay 3 opciones: Isotermos 1, Isotermos 2 y Calibración 
 	\caption{Dependiendo de la opción seleccionada, se ajustan los textos en la sección de "Estado del Sistema"}
 \end{figure}
 
+\par \noindent
+Entre los otros parametros de la sección "Datos de la Caracterización" se encuentran las casillas para "tiempo del ensayo" el cual determinara por cuanto tiempo se tomara las medidas de temperatura donde el minímo son 5 minutos y el maximo es de 60 minutos o una hora. "Estabiliazación" es el tiempo previo que seleccionara el usuario final; en muchas ocasiones personal de campo esperan que la temperatura en un medio isotermo se estabilice antes de proceder a capturar las medidas. Por ultimo "Capturar cada" se explica por si misma, es el intervalo de tiempo en que se tomaran las medidas de temperatura.
+
+\par \noindent
+Como hemos mencionado esta interfaz contiene mas componentes que las demas; por lo que, no todos los componentes de la interfaz pueden ser apreciados en una pantalla de un smartphone promedio. Se debe deslizar el fragmento para poder observar los componentes faltantes. Una vez realizado esto la interfaz quedara como la imagen 4.14. 
+
+\par \noindent
+La ultima sección "Datos del Equipo" cuenta con campos para ingresar información del equipo a realizar el ensayo de caracterización. Datos como nombre, modelo, serie y cliente. Adicional contamos con dos botones, uno para iniciar el servicio  para el registro de mediciones y otro para cancelar dicho servicio. Por último hay un "progressbar" el cual se irá completando a medida que vaya avanzando el ensayo.
+
+\subsubsection{Fragmento Registros}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{interfaz8.png}
+	\caption{Interfaz y diseño del fragmento registros}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{interfaz9.png}
+	\caption{Cuadro de selección de fechas y resultados del fragmento registros dependiendo de la fecha}
+\end{figure}
+
+\par
+El fragmento registros básicamente es una extensión del fragmento recientes, la unica diferencia es que se puede definir las fechas de las mediciones (ensayos) que hemos realizado en nuestro smartphone. 
+
+\par \noindent
+Cuenta con textos que indican los botones para seleccionar fecha de inicio y fecha fin, al seleccionar uno de los botones se abre un cuadro con una interfaz amigable, ver imagen 4.17, para seleccionar la fecha deseada. Un boton de buscar el cual buscara las mediciones en la base de datos utilizando como parametros las fechas seleccionadas. De encontrar resultados los despliega en un "ListView" del fragmento en cuestión. El comportamiendo del "ListView" del fragmento registros es igual al del fragmento recientes.
+
+\par \noindent
+Estos tres fragmentos componen la actividad principal. Ya sabemos que es la primera que visualiza el usuario después de la animación inicial. Sabemos también que es donde se consulta la información de los ensayos realizados, estipulamos los parámetros de un ensayo, lo iniciamos o cancelamos y tenemos conocimiento en tiempo real de las temperaturas de los prototipos. Pero aun no sabemos donde establecemos comunicación con nuestro prototipo. 
+
+\subsubsection{Actividad Bluetooth}
+
+\par 
+La actividad bluetooth es la encargada de visualizar los equipos bluetooth disponibles. Establece comunicación con nuestro prototipo; ya que, es la encargada de llamar al servicio bluetooth de nuestra aplicación; la cual retroalimenta la actividad principal.
+
+\par \noindent
+En las imagenes 4.13, 4.14, 4.15, 4.16 y 4.17 podemos percatar en la esquina superior derecha de nuestra aplicación un pequeño icono de color gris con un simbolo de bluetooth. Si seleccionamos este icono llamamos a la actividad bluetooth. En ella podemos visualizar los dispositivos bluetooth disponibles. Esta compuesta por un "toolbar" que con el texto "Conexiones Bluetooth" y boton para regresar a la actividad principal. Un texto con fondo que indica los dispositivos, un "ListView" en el cual se desplegaran los dispositivos disponibles. Por ultimo un boton para actualizar el "ListView" en caso tal de querer establecer una conexión con nuevos dispositivos.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{interfaz10.png}
+	\caption{Interfaz y diseño de la actividad bluetooth}
+\end{figure}
+
+\par \noindent
+La ultima tarea o función de que el usuario puede realizar en nuestra aplicación es el de consultar la información capturada. La actividad detalle es la encargada de demostrar la información capturada en los ensayos y las mediciones de los prototipos. Anteriormente en la sección de fragmento recientes y registros habíamos mencionado que el componente "ListView" tiene muchas caracterizticas y que una de ellas era la de simular un botón por cada renglón de información desplegada al usuario. La actividad detalle es ejecutada al seleccionar una de la opciones de los "ListView".
+
+\subsubsection{Actividad Detalle}
+
+\par 
+En las imagenes 4.11 y 4.17 podemos observar los "ListView" donde se despliegan información de los ensayos realizados en la aplicación. Cada opción de ambas lista cuentan con información del ensayo que se encuentra en la base de datos de la aplicación. Al seleccionar una de las opciones se desplegara la actividad detalle. 
+
+\par \noindent
+En la Imagen 4.19 observamos que en la información y componentes de la interfaz se encuentran distribuida de manera similar al del fragmento añadir.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{interfaz11.png}
+	\caption{Interfaz y diseño de la actividad detalle}
+\end{figure}
+
+\par \noindent
+Al inicio de la interfaz de esta actividad se encuentra el "toolbar" o barra de navegación con el texto "Informe Final" y un botón para regresar a la actividad principal. Seguido un texto con un fondo del color de la aplicación con el texto "Ensayo" junto con su respectivo ID en la base de datos. En la primera sección se indica al usuario si el ensayo fue "COMPLETADO" en caso tal que no haber ningun problema durante la captura de la información y en caso contrario que el usuario haya presionado el boton cancelar el texto sera "CANCELADO". Luego datos esenciales como la fecha de ejecución del ensayo, hora de inicio del ensayo y hora de finalización del ensayo.
+
+\par \noindent
+Luego sigue información de los parametros seleccionados y escritos por el usuario para el ensayo. Por ultimo se encuentra un boton con el texto "Sonda 1". La cantidad botones dependerá del tipo de ensayo que se ha realizado. De la misma manera como es dinámico el texto del "Estado del Sistema" en el fragmento añadir. Estos botones son especiales ya que al presionarlos se inicia la actividad detalle sonda.
+
+\subsubsection{Actividad Detalle Sonda}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{interfaz12.png}
+	\caption{Interfaz y diseño de la actividad detalle}
+\end{figure}
+
+\par \noindent
+La actividad detalle sonda es donde se muestran las mediciones de temperaturas capturadas por la sonda de un prototipo. Pero ¿Porqué una actividad o una interfaz para cada sonda? recordemos que en Android hay que mantener la aplicación fluida para una buena experiencia del usuario. En el peor de los casos si el usuario selecciona un tipo de caracterización "Isotermos 1" donde se tomara las mediciones de 9 sondas y si se selecciona capturar cada minuto tenemos un total de 60 mediciones por 9 sondas. Esto puede afectar el rendimiento de la aplicación al renderizar esa gran cantidad de texto en menos de 1 segundo.
+
+\par \noindent
+Otra de las razónes es para mantener mejor organizada la información y una interfaz mas amigable. La interfaz de la actividad detalle sonda consta de un "toolbar" con un texto indicando su respectiva sonda y un botón para regresar a la actividad detalle. Seguido de un texto co un fondo del color de la aplicación indicando la escala de temperatura utilizada en el ensayo por la sonda. Seguido de una tabla indicando el numero de medida, el tiempo en que se tomo esa medida y la medida de temperatura capturada. La tabla es un "ListView" y es deslizable. Seguido un texto con un fondo de color de aplicación con el texto "ESTDÍSTICAS"; por ultimo se muestran 3 textos indicando valores estadísticos con respecto a la sonda. Valores como promedio de temperatura y valor máximo y mínimo de temperatura.
+
+\par \noindent
+Teniendo en cuenta el conocimiento de todas las interfaces y las funciones de sus componentes en ellas es necesario definir como realizar ciertas tareas o funciones de la aplicación. 
