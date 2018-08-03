@@ -1,0 +1,266 @@
+\pagestyle{plain}
+\centering\textbf{BTAsynk.java}
+
+\begin{lstlisting}[language=java, caption={Clase BTAsynk, para conexiónes con dispositivos bluetooth}, captionpos=b, basicstyle=\small]
+	
+package com.prittysoft.jat;
+
+import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
+
+
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.util.UUID;
+
+
+public class BTasynk extends AsyncTask<Void, Void, Void> {
+
+private WeakReference<Context> weakContext;
+private ProgressDialog progress;
+private String address;
+
+//Bluetooth
+private BluetoothSocket BTSocket = null;
+private boolean isBTConnected = false;
+private static final UUID myUUID = UUID.fromString(
+"00001101-0000-1000-8000-00805F9B34FB"
+);
+private boolean ConnectSuccess = true;
+
+private BTAsyncResponse delegate;
+
+BTasynk(
+Context context, 
+String address, 
+BTAsyncResponse delegate
+) {
+
+	weakContext = new WeakReference<>(context);
+	this.address = address;
+	this.delegate = delegate;
+
+}
+
+public interface BTAsyncResponse {
+	void processFinish(boolean ConnectionSuccess);
+}
+
+@Override
+protected void onPreExecute() {
+	progress = ProgressDialog.show(
+	weakContext.get(), "Conectando...", "Espere un momento!"
+	);
+}
+
+@Override
+protected Void doInBackground(Void... devices) {
+	BluetoothAdapter myBluetooth;
+	
+	try {
+		if (BTSocket == null || !isBTConnected) {
+			myBluetooth = BluetoothAdapter.getDefaultAdapter();
+			BTsocketHandler.setMyBluetooth(myBluetooth);
+			
+			BluetoothDevice dispositivo = 
+			myBluetooth.getRemoteDevice(address);
+			
+			BTsocketHandler.setDispositivo(dispositivo);
+			
+			BTSocket = 
+			dispositivo.createInsecureRfcommSocketToServiceRecord(
+			myUUID
+			);
+			
+			BTsocketHandler.setBTsocket(BTSocket);
+			
+			BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
+			
+			BTSocket.connect();
+		}
+	} catch (IOException e) {
+		ConnectSuccess = false;
+	}
+	
+	return null;
+	
+}
+
+@Override
+protected void onPostExecute(Void result) {
+	super.onPostExecute(result);
+	
+	if (!ConnectSuccess) {
+		msg("CONEXION FALLO, intenta de nuevo");
+		FragmentActivity fragmentActivity = 
+		(FragmentActivity) weakContext.get();
+		fragmentActivity.
+		getSupportFragmentManager().
+		popBackStackImmediate();
+	} else {
+		msg("CONEXION EXITOSA");
+		isBTConnected = true;
+		BTsocketHandler.setBTsocket(BTSocket);
+	}
+	
+	progress.dismiss();
+	delegate.processFinish(ConnectSuccess);
+}
+
+private void msg(String s) {
+
+Toast.makeText(weakContext.get(), s, Toast.LENGTH_LONG).show();
+
+}
+
+}
+
+\end{lstlisting}
+
+\clearpage
+\centering\textbf{BTSocketHandler.java}
+
+\begin{lstlisting}[language=java, caption={Clase BTSocketHandler, para mantener los mismos datos bluetooth en toda la aplicación}, captionpos=b, basicstyle=\small]
+package com.prittysoft.jat;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+
+import org.json.JSONObject;
+
+public class BTsocketHandler {
+
+private static BluetoothSocket BTsocket;
+private static BluetoothAdapter myBluetooth;
+private static BluetoothDevice dispositivo;
+private static JSONObject BTdata;
+private static boolean BluetoothStatus = false;
+
+public static synchronized BluetoothSocket getBTsocket(){
+return BTsocket;
+}
+
+public static synchronized BluetoothAdapter getMyBluetooth(){
+return myBluetooth;
+}
+
+public static synchronized BluetoothDevice getDispositivo(){
+return dispositivo;
+}
+
+public static synchronized JSONObject getBTdata(){
+return BTdata;
+}
+
+public static synchronized void setBTsocket(
+BluetoothSocket BTsocket){
+BTsocketHandler.BTsocket = BTsocket;
+}
+
+public static synchronized void setMyBluetooth(
+BluetoothAdapter myBluetooth){
+BTsocketHandler.myBluetooth = myBluetooth;
+}
+
+public static synchronized void setDispositivo(
+BluetoothDevice dispositivo){
+BTsocketHandler.dispositivo = dispositivo;
+}
+
+public static synchronized void setBTdata(JSONObject BTdata){
+BTsocketHandler.BTdata = BTdata;
+}
+
+public static void setBluetoothStatus(boolean bluetoothStatus) {
+BluetoothStatus = bluetoothStatus;
+}
+
+public static boolean getBluetoothStatus() {
+return BluetoothStatus;
+}
+}
+\end{lstlisting}
+
+\clearpage
+\centering\textbf{BTService.java}
+
+\begin{lstlisting}[language=java, caption={Clase BTService, para actualizar BTSocketHandler y mantener informado a la actividad principal}, captionpos=b, basicstyle=\small]
+
+package com.prittysoft.jat;
+
+import android.app.IntentService;
+import android.bluetooth.BluetoothSocket;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class BTservice extends IntentService {
+private static String TAG = "BTservice";
+private static Intent localintent = new Intent("work");
+
+public BTservice() {
+	super("BTservice");
+}
+
+@Override
+protected void onHandleIntent(@Nullable Intent intent) {
+	Log.d(TAG, "Service Started!");
+	
+	BluetoothSocket BTsocket = BTsocketHandler.getBTsocket();
+	
+	try{
+		BTsocketHandler.setBluetoothStatus(true);
+		BTcomunication(BTsocket);
+	}catch (IOException | JSONException e){
+		Log.d(TAG, e.toString());
+		localintent.putExtra(TAG, "CLOSED");
+		LocalBroadcastManager.
+		getInstance(getApplicationContext()).
+		sendBroadcast(localintent);
+	}
+	
+	BTsocketHandler.setBluetoothStatus(false);
+	Log.d(TAG, "Service Ended!");
+}
+
+private void BTcomunication(BluetoothSocket BTSocket) throws 
+IOException, JSONException {
+	JSONObject mainObject;
+	BufferedReader input;
+	String msg;
+	input = new BufferedReader(
+	new InputStreamReader(
+		BTSocket.getInputStream()
+		)
+	);
+	
+	while ((msg = input.readLine()) != null){
+		msg = msg.replace("-127.00", "N/A");
+		Log.d(TAG, msg);
+		mainObject = new JSONObject(msg);
+		BTsocketHandler.setBTdata(mainObject);
+		localintent.putExtra(TAG, "OK");
+		LocalBroadcastManager.
+		getInstance(getApplicationContext()).
+		sendBroadcast(localintent);
+	}
+}
+
+}
+
+\end{lstlisting}

@@ -1,0 +1,761 @@
+\pagestyle{plain}
+\centering\textbf{DatabaseHelper.java}
+
+\begin{lstlisting}[language=java, caption={Clase DatabaseHelper, crea la base de datos de no existir y contiene las consultas e inserciones a la misma}, captionpos=b, basicstyle=\small]
+
+package com.prittysoft.jat;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.util.ArrayList;
+
+
+public class DatabaseHelper extends SQLiteOpenHelper {
+
+private static final String TAG = "DatabaseHelper";
+
+/*DB tables*/
+private static final String DB_NAME = "JAT_DB";
+private static final String TABLE1_NAME = "mainmeasurements";
+private static final String TABLE2_NAME = "isotermos1";
+private static final String TABLE3_NAME = "isotermos2";
+private static final String TABLE4_NAME = "calibracionpatron";
+
+/*TABLE1 fields*/
+private static final String TABLE1_COL1 = "id_main";
+private static final String TABLE1_COL2 = "date";
+private static final String TABLE1_COL3 = "start_time";
+private static final String TABLE1_COL4 = "end_time";
+private static final String TABLE1_COL5 = "tipo_ensayo";
+private static final String TABLE1_COL6 = "tiempo_ensayo";
+private static final String TABLE1_COL7 = "tiempo_estabilizacion";
+private static final String TABLE1_COL8 = "tiempo_captura";
+private static final String TABLE1_COL9 = "equipo_nombre";
+private static final String TABLE1_COL10 = "equipo_modelo";
+private static final String TABLE1_COL11 = "equipo_serial";
+private static final String TABLE1_COL12 = "equipo_cliente";
+private static final String TABLE1_COL13 = "status";
+
+/*TABLE2 fields*/
+private static final String TABLE2_COL1 = "id_isotermos2";
+private static final String TABLE2_COL2 = "id_main";
+private static final String TABLE2_COL3 = "timestamp";
+private static final String TABLE2_COL4 = "S1";
+private static final String TABLE2_COL5 = "S2";
+private static final String TABLE2_COL6 = "S3";
+private static final String TABLE2_COL7 = "S4";
+
+/*TABLE3 fields*/
+private static final String TABLE3_COL1 = "id_isotermos1";
+private static final String TABLE3_COL2 = "id_main";
+private static final String TABLE3_COL3 = "timestamp";
+private static final String TABLE3_COL4 = "S1";
+private static final String TABLE3_COL5 = "S2";
+private static final String TABLE3_COL6 = "S3";
+private static final String TABLE3_COL7 = "S4";
+private static final String TABLE3_COL8 = "S5";
+private static final String TABLE3_COL9 = "S6";
+private static final String TABLE3_COL10 = "S7";
+private static final String TABLE3_COL11 = "S8";
+private static final String TABLE3_COL12 = "S9";
+
+/*Table4 fields*/
+private static final String TABLE4_COL1 = "id_sensorscalibration";
+private static final String TABLE4_COL2 = "id_main";
+private static final String TABLE4_COL3 = "timestamp";
+private static final String TABLE4_COL4 = "S1";
+
+/*CREATE TABLE queries*/
+private static final String CREATETABLE1 = "
+CREATE TABLE IF NOT EXISTS " + TABLE1_NAME + " (" + 
+TABLE1_COL1 +" INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+TABLE1_COL2 + " TEXT, " + TABLE1_COL3 + " TEXT, " + 
+TABLE1_COL4 + " TEXT, " + TABLE1_COL5 + " TEXT, " + 
+TABLE1_COL6 + " TEXT, "+ TABLE1_COL7 + " TEXT, " + 
+TABLE1_COL8 + " TEXT, "+ TABLE1_COL9 + " TEXT, "+ 
+TABLE1_COL10 + " TEXT, " + TABLE1_COL11 + " TEXT, " + 
+TABLE1_COL12 +" TEXT, " + TABLE1_COL13 + " TEXT)";
+
+private static final String CREATETABLE2 = "
+CREATE TABLE IF NOT EXISTS " + TABLE2_NAME + " (" + 
+TABLE2_COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+TABLE2_COL2 + " INTEGER, " + TABLE2_COL3 + " TEXT, " + 
+TABLE2_COL4 + " TEXT, " + TABLE2_COL5 + " TEXT, " + 
+TABLE2_COL6 + " TEXT, " + TABLE2_COL7 + " TEXT, " +
+"FOREIGN KEY ("+ TABLE2_COL2 + ") REFERENCES " + 
+TABLE1_NAME + " (" + TABLE1_COL1 + "))";
+
+
+
+private static final String CREATETABLE3 = "
+CREATE TABLE IF NOT EXISTS " + TABLE3_NAME + " (" + 
+TABLE3_COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+TABLE3_COL2 + " INTEGER, " + TABLE3_COL3 + " TEXT, " + 
+TABLE3_COL4 + " TEXT, " + TABLE3_COL5 + " TEXT, " + 
+TABLE3_COL6 + " TEXT, " + TABLE3_COL7 + " TEXT," + 
+TABLE3_COL8 + " TEXT, " + TABLE3_COL9 + " TEXT, " + 
+TABLE3_COL10 + " TEXT, " + TABLE3_COL11 + " TEXT, " + 
+TABLE3_COL12 +", " + "FOREIGN KEY (" + TABLE3_COL2 + 
+") REFERENCES " + TABLE1_NAME + " (" + TABLE1_COL1 + "))";
+
+private static final String CREATETABLE4 = 
+"CREATE TABLE IF NOT EXISTS " + TABLE4_NAME + " (" + 
+TABLE4_COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + 
+TABLE4_COL2 + " INTEGER, " + TABLE4_COL3 + " TEXT, " + 
+TABLE4_COL4 + " TEXT, FOREIGN KEY (" + TABLE4_COL2 + 
+") REFERENCES " + TABLE1_NAME + " (" + TABLE1_COL1 + "))";
+
+
+/*DROP TABLE queries*/
+private static final String DROPTABLE1 = 
+"DROP TABLE IF EXISTS " + TABLE1_NAME;
+
+private static final String DROPTABLE2 = 
+"DROP TABLE IF EXISTS " + TABLE2_NAME;
+
+private static final String DROPTABLE3 = 
+"DROP TABLE IF EXISTS " + TABLE3_NAME;
+
+private static final String DROPTABLE4 = 
+"DROP TABLE IF EXISTS " + TABLE4_NAME;
+
+
+public DatabaseHelper(Context context){
+super(context, DB_NAME, null,1);
+}
+
+@Override
+public void onCreate(SQLiteDatabase db) {
+	db.execSQL(CREATETABLE1);
+	db.execSQL(CREATETABLE2);
+	db.execSQL(CREATETABLE3);
+	db.execSQL(CREATETABLE4);
+}
+
+@Override
+public void onUpgrade
+(SQLiteDatabase db, 
+int oldVersion, 
+int newVersion) {
+
+	db.execSQL(DROPTABLE1);
+	db.execSQL(DROPTABLE2);
+	db.execSQL(DROPTABLE3);
+	db.execSQL(DROPTABLE4);
+	onCreate(db);
+
+}
+
+
+// INSERT QUERIES
+public boolean addDataTable1(String[] values){
+
+	SQLiteDatabase db = this.getWritableDatabase();
+	
+	ContentValues contentValues = new ContentValues();
+	contentValues.put(TABLE1_COL2, values[0]);
+	contentValues.put(TABLE1_COL3, values[1]);
+	contentValues.put(TABLE1_COL4, values[2]);
+	contentValues.put(TABLE1_COL5, values[3]);
+	contentValues.put(TABLE1_COL6, values[4]);
+	contentValues.put(TABLE1_COL7, values[5]);
+	contentValues.put(TABLE1_COL8, values[6]);
+	contentValues.put(TABLE1_COL9, values[7]);
+	contentValues.put(TABLE1_COL10, values[8]);
+	contentValues.put(TABLE1_COL11, values[9]);
+	contentValues.put(TABLE1_COL12, values[10]);
+	
+	long result = db.insert(TABLE1_NAME, null, contentValues);
+	
+	if (result == -1) {
+		return false;
+	} else
+		return true;
+}
+
+public void addDataTable2(String[] values){
+
+	SQLiteDatabase db = this.getWritableDatabase();
+	ContentValues contentValues = new ContentValues();
+	
+	contentValues.put(TABLE2_COL2, values[0]);
+	contentValues.put(TABLE2_COL3, values[1]);
+	contentValues.put(TABLE2_COL4, values[2]);
+	contentValues.put(TABLE2_COL5, values[3]);
+	contentValues.put(TABLE2_COL6, values[4]);
+	contentValues.put(TABLE2_COL7, values[5]);
+	
+	db.insert(TABLE2_NAME, null, contentValues);
+	db.close();
+
+}
+
+public void addDataTable3(String[] values){
+
+	SQLiteDatabase db = this.getWritableDatabase();
+	ContentValues contentValues = new ContentValues();
+	
+	contentValues.put(TABLE3_COL2, values[0]);
+	contentValues.put(TABLE3_COL3, values[1]);
+	contentValues.put(TABLE3_COL4, values[2]);
+	contentValues.put(TABLE3_COL5, values[3]);
+	contentValues.put(TABLE3_COL6, values[4]);
+	contentValues.put(TABLE3_COL7, values[5]);
+	contentValues.put(TABLE3_COL8, values[6]);
+	contentValues.put(TABLE3_COL9, values[7]);
+	contentValues.put(TABLE3_COL10, values[8]);
+	contentValues.put(TABLE3_COL11, values[9]);
+	contentValues.put(TABLE3_COL12, values[10]);
+	
+	db.insert(TABLE3_NAME, null, contentValues);
+	db.close();
+
+}
+
+public void addDataTable4(String[] values){
+
+	SQLiteDatabase db = this.getWritableDatabase();
+	ContentValues contentValues = new ContentValues();
+	
+	contentValues.put(TABLE3_COL2, values[0]);
+	contentValues.put(TABLE3_COL3, values[1]);
+	contentValues.put(TABLE3_COL4, values[2]);
+	
+	db.insert(TABLE4_NAME, null, contentValues);
+	db.close();
+
+}
+
+//SELECT QUERIES
+public Cursor getRecentsData(){
+
+	SQLiteDatabase db = this.getReadableDatabase();
+	String query = "SELECT * FROM " + TABLE1_NAME + 
+	" ORDER BY " + TABLE1_COL1 + " DESC LIMIT 10";
+	
+	return db.rawQuery(query, null);
+
+}
+
+public Cursor getDataBetweenDates(
+	String startdate, 
+	String enddate){
+	
+	SQLiteDatabase db = this.getReadableDatabase();
+	String query = "select * from " + TABLE1_NAME + 
+	" where date between '" + startdate +"' and '" + 
+	enddate +"' order by " + TABLE1_COL1 + " DESC";
+	
+	return db.rawQuery(query, null);
+
+}
+
+public Integer getAutoIncrementMeasurements(){
+	SQLiteDatabase db = this.getReadableDatabase();
+	String query = 
+	"SELECT seq FROM sqlite_sequence
+	 WHERE name=\"mainmeasurements\"";
+	Cursor data = db.rawQuery(query, null);
+	Integer AutoIncrement;
+	if (data.moveToNext()){
+		AutoIncrement = data.getInt(0);
+	}
+	else{
+		AutoIncrement = 0;
+	}
+	data.close();
+	Log.d(TAG, "AutoIncrement Value: " + 
+	Integer.toString(AutoIncrement));
+	
+	return AutoIncrement;
+}
+
+public Cursor getSondaValues(
+	String id,
+	String table, 
+	String SondaNumber){
+	
+	String Sonda = "S" + SondaNumber;
+	
+	SQLiteDatabase db = this.getReadableDatabase();
+	String query = "SELECT timestamp, " + Sonda + 
+	" FROM " + table + " WHERE id_main = " + id;
+	
+	return db.rawQuery(query, null);
+
+}
+
+// UPDATE QUERIES
+public void updateTable1Complete(Integer seq, String endtime){
+
+	SQLiteDatabase db = this.getWritableDatabase();
+	
+	ContentValues newValue = new ContentValues();
+	newValue.put("end_time", endtime);
+	newValue.put("status", "COMPLETADO");
+	
+	db.update(TABLE1_NAME, newValue, "id_main ="+seq, null);
+	db.close();
+
+}
+
+public void updateTable1Canceled(Integer seq, String endtime){
+
+	SQLiteDatabase db = this.getWritableDatabase();
+	
+	ContentValues newValue = new ContentValues();
+	newValue.put("end_time", endtime);
+	newValue.put("status", "CANCELADO");
+	
+	db.update(TABLE1_NAME, newValue, "id_main ="+seq, null);
+	db.close();
+
+}
+
+// OTROS QUERIES
+public ArrayList<String> getMainMeasurementDetails(String id){
+	ArrayList<String> values = new ArrayList<>();
+	SQLiteDatabase db = this.getReadableDatabase();
+	String query = 
+	"SELECT * FROM mainmeasurements WHERE id_main = " + id;
+	
+	Cursor data = db.rawQuery(query, null);
+	
+	//Cursor should return only one row
+	if (data.moveToNext()){
+		values.add(data.getString(0));
+		values.add(data.getString(1));
+		values.add(data.getString(2));
+		values.add(data.getString(3));
+		values.add(data.getString(4));
+		values.add(data.getString(5));
+		values.add(data.getString(6));
+		values.add(data.getString(7));
+		values.add(data.getString(8));
+		values.add(data.getString(9));
+		values.add(data.getString(10));
+		values.add(data.getString(11));
+		values.add(data.getString(12));
+	}
+	else {
+		values = null;
+	}
+	
+	data.close();
+	db.close();
+	
+	return values;
+}
+
+
+}
+
+\end{lstlisting}
+
+\clearpage
+
+\centering\textbf{RegisterTempService.java}
+
+\begin{lstlisting}[language=java, caption={Clase RegisterTempService, Valida que el usuario no haya presionado el boton cancelar y realiza inserciones y actualizaciones a la base de datos.}, captionpos=b, basicstyle=\small]
+
+package com.prittysoft.jat;
+
+import android.app.IntentService;
+import android.content.Intent;
+import android.os.SystemClock;
+import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+
+public class RegisterTempService extends IntentService {
+
+private static boolean ServiceStatus;
+private static final String TAG = "RegisterTempService";
+private static final Integer minute = 1000 * 60;
+private static Intent localintent = new Intent("RegisterTemp");
+SimpleDateFormat hour_format = new SimpleDateFormat(
+"k:mm:ss", Locale.US);
+
+// SimpleDateFormat timezone = new SimpleDateFormat("z", Locale.US);
+
+// Class helper
+DatabaseHelper mDatabaseHelper;
+
+// Variables
+String fecha, hora, tipo_ensayo, tiempo_ensayo, 
+tiempo_estabilizacion, tiempo_captura,
+equipo_nombre, equipo_modelo, equipo_serial, equipo_cliente;
+
+String tipo_ensayo_posicion;
+
+public RegisterTempService() {
+super("RegisterTempService");
+}
+
+@Override
+public void onDestroy() {
+ServiceStatus = false;
+Log.d(TAG, "Serviced Destroyed");
+super.onDestroy();
+}
+
+@Override
+protected void onHandleIntent(@Nullable Intent intent) {
+
+ServiceStatus = true;
+Log.d(TAG, "Service Started!");
+
+if (intent != null) {
+
+getValuesFromAddfragment(intent);
+Data2DB();
+
+}
+
+Log.d(TAG, "Service Finished");
+
+}
+
+private void getValuesFromAddfragment(Intent intent) {
+
+fecha = intent.getStringExtra("fecha");
+hora = intent.getStringExtra("hora");
+tipo_ensayo = intent.getStringExtra("tipo_ensayo");
+tiempo_ensayo = intent.getStringExtra("tiempo_ensayo");
+tiempo_estabilizacion = intent.getStringExtra(
+"tiempo_estabilizacion");
+tiempo_captura = intent.getStringExtra("tiempo_captura");
+equipo_nombre = intent.getStringExtra("equipo_nombre");
+equipo_modelo = intent.getStringExtra("equipo_modelo");
+equipo_serial = intent.getStringExtra("equipo_serial");
+equipo_cliente = intent.getStringExtra("equipo_cliente");
+tipo_ensayo_posicion = intent.getStringExtra(
+"tipo_ensayo_posicion");
+
+}
+
+private void Data2DB() {
+
+mDatabaseHelper = new DatabaseHelper(getApplicationContext());
+
+Integer t_estabilizacion = Integer.parseInt(
+tiempo_estabilizacion);
+Integer t_ensayo_posicion = Integer.parseInt(
+tipo_ensayo_posicion);
+Integer current_id;
+
+//Database Insertion for measurements table
+String[] Table1Values = {
+fecha,
+hora,
+null,
+tipo_ensayo,
+tiempo_ensayo,
+tiempo_estabilizacion,
+tiempo_captura,
+equipo_nombre,
+equipo_modelo,
+equipo_serial,
+equipo_cliente,
+"INCOMPLETO"
+};
+
+
+if (mDatabaseHelper.addDataTable1(Table1Values)) {
+
+Log.d(TAG, "Succesfull Table 1 INSERT");
+
+// Pausamos el proceso por el 
+tiempo de estabilizacion si es diferente de 0
+if (!tiempo_estabilizacion.equals("0")) {
+Log.d(TAG, "Tiempo de estabilizacion es: " +
+ tiempo_estabilizacion);
+SystemClock.sleep(t_estabilizacion);
+}
+
+// Verificamos que no se ha cancelado el servicio
+if (!ServiceStatus) {
+stopSelf();
+Log.d(TAG, "Service Interrupted");
+return;
+}
+
+current_id = mDatabaseHelper.getAutoIncrementMeasurements();
+
+try {
+
+switch (t_ensayo_posicion) {
+case 0:
+InsertIsotermos1(current_id);
+break;
+case 1:
+InsertIsotermos2(current_id);
+break;
+case 2:
+InsertCalPatron(current_id);
+break;
+}
+
+} catch (JSONException e) {
+
+Log.d(TAG, "JSONException" + e.toString());
+
+}
+
+if (ServiceStatus) {
+
+// Actualizamos el valor endtime 
+que indica cuando se finalizo el proceso
+mDatabaseHelper.updateTable1Complete(
+current_id, 
+hour_format.format(new Date()));
+
+} else {
+
+// Actualizamos el valor endtime 
+que indica cuando se cancelo el proceso
+mDatabaseHelper.updateTable1Canceled(current_id, 
+hour_format.format(new Date()));
+
+}
+
+} else {
+
+Log.d(TAG, "Unsuccesfull Table1 INSERT");
+
+}
+
+
+}
+
+private void InsertIsotermos1(Integer queryID) 
+throws JSONException {
+
+String current_timestamp;
+
+Integer t_ensayo = Integer.parseInt(tiempo_ensayo);
+Integer t_captura = Integer.parseInt(tiempo_captura);
+Integer progressbar_percentage, current_time;
+
+JSONObject JSONValues;
+
+String S1, S2, S3, S4, S5, S6, S7, S8, S9;
+
+for (current_time = 1; 
+current_time <= t_ensayo; 
+current_time += t_captura) {
+
+SystemClock.sleep(minute * t_captura);
+
+// Verificamos que no se ha cancelado el servicio
+if (!ServiceStatus) {
+stopSelf();
+Log.d(TAG, "Service Interrupted");
+return;
+}
+
+current_timestamp = hour_format.format(new Date());
+
+JSONValues = BTsocketHandler.getBTdata();
+S1 = JSONValues.getString("S1");
+S2 = JSONValues.getString("S2");
+S3 = JSONValues.getString("S3");
+S4 = JSONValues.getString("S4");
+S5 = JSONValues.getString("S5");
+S6 = JSONValues.getString("S6");
+S7 = JSONValues.getString("S7");
+S8 = JSONValues.getString("S8");
+S9 = JSONValues.getString("S9");
+
+String[] table3_values = {
+queryID.toString(),
+current_timestamp,
+S1,
+S2,
+S3,
+S4,
+S5,
+S6,
+S7,
+S8,
+S9
+};
+
+mDatabaseHelper.addDataTable3(table3_values);
+
+// Verificamos que no se ha cancelado el servicio
+if (!ServiceStatus) {
+
+stopSelf();
+Log.d(TAG, "Service Interrupted");
+return;
+
+} else {
+
+progressbar_percentage = (current_time * 100) / t_ensayo;
+
+// Enviamos informacion del proceso 
+al progressbar del Addfragment
+localintent.putExtra("progressbar_percentage",
+progressbar_percentage.toString());
+LocalBroadcastManager.
+getInstance(getApplicationContext()).
+sendBroadcast(localintent);
+
+}
+
+}
+
+
+}
+
+private void InsertIsotermos2(Integer queryID) throws JSONException {
+
+String current_timestamp;
+
+Integer t_ensayo = Integer.parseInt(tiempo_ensayo);
+Integer t_captura = Integer.parseInt(tiempo_captura);
+Integer progressbar_percentage, current_time;
+
+JSONObject JSONValues;
+
+String S1, S2, S3, S4;
+
+for (current_time = 1; 
+current_time <= t_ensayo; 
+current_time += t_captura) {
+
+SystemClock.sleep(minute * t_captura);
+
+// Verificamos que no se ha cancelado el servicio
+if (!ServiceStatus) {
+stopSelf();
+Log.d(TAG, "Service Interrupted");
+return;
+}
+
+current_timestamp = hour_format.format(new Date());
+
+JSONValues = BTsocketHandler.getBTdata();
+S1 = JSONValues.getString("S1");
+S2 = JSONValues.getString("S2");
+S3 = JSONValues.getString("S3");
+S4 = JSONValues.getString("S4");
+
+String[] table2_values = {
+queryID.toString(),
+current_timestamp,
+S1,
+S2,
+S3,
+S4
+};
+
+mDatabaseHelper.addDataTable2(table2_values);
+
+// Verificamos que no se ha cancelado el servicio
+if (!ServiceStatus) {
+
+stopSelf();
+Log.d(TAG, "Service Interrupted");
+return;
+
+} else {
+
+progressbar_percentage = (current_time * 100) / t_ensayo;
+
+// Enviamos informacion del proceso 
+al progressbar del Addfragment
+localintent.putExtra("progressbar_percentage",
+progressbar_percentage.toString());
+LocalBroadcastManager.
+getInstance(getApplicationContext()).
+sendBroadcast(localintent);
+
+}
+
+}
+
+
+}
+
+private void InsertCalPatron(Integer queryID) 
+throws JSONException {
+
+String current_timestamp;
+
+Integer t_ensayo = Integer.parseInt(tiempo_ensayo);
+Integer t_captura = Integer.parseInt(tiempo_captura);
+Integer progressbar_percentage, current_time;
+
+JSONObject JSONValues;
+
+String S1;
+
+for (current_time = 1; 
+current_time <= t_ensayo; 
+current_time += t_captura) {
+
+SystemClock.sleep(minute * t_captura);
+
+// Verificamos que no se ha cancelado el servicio
+if (!ServiceStatus) {
+stopSelf();
+Log.d(TAG, "Service Interrupted");
+return;
+}
+
+current_timestamp = hour_format.format(new Date());
+
+JSONValues = BTsocketHandler.getBTdata();
+S1 = JSONValues.getString("S1");
+
+String[] table4_values = {
+queryID.toString(),
+current_timestamp,
+S1,
+};
+
+mDatabaseHelper.addDataTable4(table4_values);
+
+// Verificamos que no se ha cancelado el servicio
+if (!ServiceStatus) {
+
+stopSelf();
+Log.d(TAG, "Service Interrupted");
+return;
+
+} else {
+
+progressbar_percentage = (current_time * 100) / t_ensayo;
+
+// Enviamos informacion del 
+proceso al progressbar del Addfragment
+localintent.putExtra("progressbar_percentage",
+progressbar_percentage.toString());
+LocalBroadcastManager.
+getInstance(getApplicationContext()).
+sendBroadcast(localintent);
+
+}
+
+}
+
+}
+
+}
+
+\end{lstlisting}
