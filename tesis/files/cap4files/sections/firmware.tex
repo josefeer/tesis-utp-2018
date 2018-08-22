@@ -467,9 +467,9 @@ void loop() {
 \par \noindent
 El firmware de nuestro dispositivo consta de las siguientes funciones:
 \begin{itemize}
-	\item PingPongG1: Abre una tubería de comunicación en el canal de radio frecuencia del grupo 1 para el radioID 2, solicita información del sensor del radioID en cuestión. Si el radioID ha retornado una respuesta en menos de 200 milisegundos, entonces verificamos el radioID y asignamos el valor solicitado a a la variable correspondiente. En caso contrario se procede al siguiente radioID. La función se ejecuta para obtener los valores de los radioID 2, 3, 4 y 5. Esta función solo es ejecutada por el radioID 1.
+	\item PingPongG1: Abre una tubería de comunicación en el canal de radio frecuencia del grupo 1 para el radioID 2, solicita información del sensor del radioID en cuestión. Si el radioID ha retornado una respuesta en menos de 200 milisegundos, entonces verificamos el radioID y asignamos el valor solicitado a la variable correspondiente. En caso contrario se procede al siguiente radioID. La función se ejecuta para obtener los valores de los radioID 2, 3, 4 y 5. Esta función solo es ejecutada por el radioID 1.
 	
-	\item PongPingG1: Abre una tubería de comunicación  en el canal de radiofrecuencia del grupo 1 con el radioID 1 y procede a esperar recibir el llamado del radioID 1 para retornar el valor de su respectivo sensor. La función es ejecutada por los radioID 2, 3, 4 y 5.
+	\item PongPingG1: Abre una tubería de comunicación en el canal de radiofrecuencia del grupo 1 con el radioID 1 y procede a esperar recibir el llamado del radioID 1 para retornar el valor de su respectivo sensor. La función es ejecutada por los radioID 2, 3, 4 y 5.
 	
 	\item PingPonG2: Lo mismo que la función "PingPongG1"; con la excepción que utiliza un canal de radiofrecuencia diferente.
 	
@@ -488,13 +488,13 @@ El firmware de nuestro dispositivo consta de las siguientes funciones:
 Anteriormente se ha comentado que los microcontroladores Arduino requieren en su programación dos funciones principales: "setup" y "loop". 
 
 \par \noindent
-La función "setup" de nuestro prototipo inicializamos todos los componentes de nuestro prototipo. En la función "loop" empezamos llamando el valor de temperatura del sensor. Luego en una condición "if" validamos el ID de nuestro dispositivo. En caso tal de ser el 1 llamamos las funciones "PingPongG1" y "PingPongG2" para obtener los valores de los sensores de los otros prototipos. Se llama a la funcion "updateBTjson" para formatear correctamente los valores de los sensores para ser enviados por bluetooth y enviamos los valores por puerto serial y bluetooth. Por ultimo detenemos la ejecución del microcontrolador por 400 milisegundos.
+La función "setup" de nuestro prototipo inicializamos todos los componentes de nuestro prototipo. En la función "loop" empezamos llamando el valor de temperatura del sensor. Luego en una condición "if" validamos el ID de nuestro dispositivo. En caso tal de ser el 1 llamamos las funciones "PingPongG1" y "PingPongG2" para obtener los valores de los sensores de los otros prototipos. Se llama a la función "updateBTjson" para formatear correctamente los valores de los sensores para ser enviados por bluetooth y enviamos los valores por puerto serial y bluetooth. Por último detenemos la ejecución del microcontrolador por 400 milisegundos.
 
 \par \noindent
-En caso de ser un ID entre 2 y 5, creamos una variable tipo "struct" llamada "RFnode" y le asignamos el valor retornado de la función "makepackage". Por ultimo la variable "RFnode" es enviada a la función "PongPingG1". En caso de ser un ID entre 6 y 9, se realizan los mismos pasos del párrafo anterior; pero, llamamos la función "PongPingG2". En caso tal de no contener un ID valido simplemente no se utiliza el módulo de radio ni el bluetooth.
+En caso de ser un ID entre 2 y 5, creamos una variable tipo "struct" llamada "RFnode" y le asignamos el valor retornado de la función "makepackage". La variable "RFnode" es enviada a la función "PongPingG1". En caso de ser un ID entre 6 y 9, se realizan los mismos pasos del párrafo anterior; pero, llamamos la función "PongPingG2". En caso tal de no contener un ID valido simplemente no se utiliza el módulo de radio ni el bluetooth.
 
 \par \noindent
-Por ultimo realizamos sentencias de control "if" para actualizar la pantalla LCD de nuestro prototipo y actualizamos en caso tal que el ultimo valor de temperatura es diferente al anterior. Adicional agregamos condiciones visualizar los valores máximos y mínimos de temperatura que a capturado el prototipo.
+Por último realizamos sentencias de control "if" para actualizar la pantalla LCD de nuestro prototipo y actualizamos en caso tal que el ultimo valor de temperatura es diferente al anterior. Adicional agregamos condiciones visualizar los valores máximos y mínimos de temperatura que ha capturado el prototipo.
 
 \par \noindent
-Ahora ¿Que ocurre con lo que enviamos los valores por bluetooth? Sabemos que llegan a una aplicación android; pero, ¿Como son procesados esos datos? Para las respuestas necesitamos saber mas sobre la aplicación android.
+Ahora ¿Que ocurre con lo que enviamos los valores por bluetooth? Sabemos que llegan a una aplicación Android; pero ¿Como son procesados esos datos? Para las respuestas necesitamos saber más sobre la aplicación Android.

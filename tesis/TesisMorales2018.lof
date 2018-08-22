@@ -1,83 +1,81 @@
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Smartphones con los Sistemas Operativos iOS, Android y Windows Phone, respectivamente}}{5}{figure.1.1}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Dise\IeC {\~n}o preliminar para el logo de Android (Izquierda) y el logo oficial (Derecha)}}{6}{figure.1.2}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Logo oficial (Izquierda) e Interfaz m\IeC {\'o}vil (Derecha) de Android 5.0 Lollipop}}{7}{figure.1.3}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Logo Oficial de Arduino}}{8}{figure.1.4}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Placa Arduino Uno}}{8}{figure.1.5}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Placa Arduino Nano}}{9}{figure.1.6}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Ejemplo de Resistor y Simbolog\IeC {\'\i }a}}{9}{figure.1.7}
+\contentsline {figure}{\numberline {1.8}{\ignorespaces Ejemplo de Capacitor y Simbolog\IeC {\'\i }a}}{10}{figure.1.8}
+\contentsline {figure}{\numberline {1.9}{\ignorespaces Ejemplo de Inductor y Simbolog\IeC {\'\i }a}}{11}{figure.1.9}
+\contentsline {figure}{\numberline {1.10}{\ignorespaces Placa HC-05 Modelo ZS-040}}{12}{figure.1.10}
+\contentsline {figure}{\numberline {1.11}{\ignorespaces Placa nRF24L01+}}{12}{figure.1.11}
+\contentsline {figure}{\numberline {1.12}{\ignorespaces Pantalla LCM-1602, junto con IC para mejor integraci\IeC {\'o}n con Arduino.}}{14}{figure.1.12}
+\contentsline {figure}{\numberline {1.13}{\ignorespaces LCD Nokia 5110 con placa para una mejor integraci\IeC {\'o}n con Arduino.}}{14}{figure.1.13}
+\contentsline {figure}{\numberline {1.14}{\ignorespaces ILI9341 de 2.8 pulgadas con placa para mejor integraci\IeC {\'o}n con Arduino.}}{15}{figure.1.14}
+\contentsline {figure}{\numberline {1.15}{\ignorespaces Ejemplos de diferentes tipos de term\IeC {\'o}metros}}{17}{figure.1.15}
+\contentsline {figure}{\numberline {1.16}{\ignorespaces Ejemplo de term\IeC {\'o}metro de l\IeC {\'a}mina bimet\IeC {\'a}lica}}{18}{figure.1.16}
+\contentsline {figure}{\numberline {1.17}{\ignorespaces Ejemplo de term\IeC {\'o}metro de gas}}{19}{figure.1.17}
+\contentsline {figure}{\numberline {1.18}{\ignorespaces Sensor DS18B20 estilo sonda}}{20}{figure.1.18}
+\contentsline {figure}{\numberline {1.19}{\ignorespaces Sensor DHT11 en placa}}{21}{figure.1.19}
+\contentsline {figure}{\numberline {1.20}{\ignorespaces Ciclo del Prototipado Rapido}}{22}{figure.1.20}
+\contentsline {figure}{\numberline {1.21}{\ignorespaces Principales T\IeC {\'e}cnicas Comerciales de Impresion 3D}}{23}{figure.1.21}
+\contentsline {figure}{\numberline {1.22}{\ignorespaces Impresora FDM: MP Select Mini V2 de Monoprice.}}{23}{figure.1.22}
+\contentsline {figure}{\numberline {1.23}{\ignorespaces Impresora SLA: Form2 de Formlabs.}}{24}{figure.1.23}
+\contentsline {figure}{\numberline {1.24}{\ignorespaces Impresora DLP: LCD Photon de Anycubic.}}{24}{figure.1.24}
+\contentsline {figure}{\numberline {1.25}{\ignorespaces Bloque de ba\IeC {\~n}o seco (Izquierda) y term\IeC {\'o}metro de referencia utilizado en SIGCSA (Derecha)}}{28}{figure.1.25}
+\contentsline {figure}{\numberline {1.26}{\ignorespaces Celdas de punto fijo ITS-90 y Fluke Superterm\IeC {\'o}metro 1594A, ambos utilizados para calibraciones de est\IeC {\'a}ndares primarios.}}{29}{figure.1.26}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Smartphones con los Sistemas Operativos M\IeC {\'o}viles Mas Populares}}{6}{figure.2.1}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Dise\IeC {\~n}o preliminar para el logo de Android (Izquierda) y el logo oficial (Derecha)}}{7}{figure.2.2}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Logo oficial (Izquierda) e Interfaz m\IeC {\'o}vil (Derecha) de Android 5.0 Lollipop}}{8}{figure.2.3}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Logo Oficial de Arduino}}{9}{figure.2.4}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Placa Arduino Uno}}{9}{figure.2.5}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Placa Arduino Nano}}{10}{figure.2.6}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Ejemplo de Resistor y Simbolog\IeC {\'\i }a}}{11}{figure.2.7}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Ejemplo de Capacitor y Simbolog\IeC {\'\i }a}}{11}{figure.2.8}
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Ejemplo de Inductor y Simbolog\IeC {\'\i }a}}{12}{figure.2.9}
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Placa HC-05 Modelo ZS-040}}{13}{figure.2.10}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Placa nRF24L01+}}{14}{figure.2.11}
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Pantalla LCM-1602, junto con IC para mejor integraci\IeC {\'o}n con arduino.}}{15}{figure.2.12}
-\contentsline {figure}{\numberline {2.13}{\ignorespaces LCD Nokia 5110 con placa para una mejor intregraci\IeC {\'o}n con arduino.}}{16}{figure.2.13}
-\contentsline {figure}{\numberline {2.14}{\ignorespaces ILI9341 de 2.8 pulgadas con placa para mejor integraci\IeC {\'o}n con arduino.}}{16}{figure.2.14}
-\contentsline {figure}{\numberline {2.15}{\ignorespaces Sensor DS18B20 estilo sonda}}{18}{figure.2.15}
-\contentsline {figure}{\numberline {2.16}{\ignorespaces Sensor DHT11 en placa}}{19}{figure.2.16}
-\contentsline {figure}{\numberline {2.17}{\ignorespaces Ejemplos de diferentes tipos de term\IeC {\'o}metros}}{20}{figure.2.17}
-\contentsline {figure}{\numberline {2.18}{\ignorespaces Ejemplo de term\IeC {\'o}metro de l\IeC {\'a}mina bimet\IeC {\'a}lica}}{22}{figure.2.18}
-\contentsline {figure}{\numberline {2.19}{\ignorespaces Ejemplo de term\IeC {\'o}metro de gas}}{22}{figure.2.19}
-\contentsline {figure}{\numberline {2.20}{\ignorespaces Ciclo del Prototipado Rapido}}{24}{figure.2.20}
-\contentsline {figure}{\numberline {2.21}{\ignorespaces Principales T\IeC {\'e}cnicas Comerciales de Impresion 3D}}{25}{figure.2.21}
-\contentsline {figure}{\numberline {2.22}{\ignorespaces Impresora FDM: MP Select Mini V2 de Monoprice.}}{25}{figure.2.22}
-\contentsline {figure}{\numberline {2.23}{\ignorespaces Impresora SLA: Form2 de Formlabs.}}{26}{figure.2.23}
-\contentsline {figure}{\numberline {2.24}{\ignorespaces Impresora DLP: LCD Photon de Anycubic.}}{26}{figure.2.24}
-\contentsline {figure}{\numberline {2.25}{\ignorespaces Pir\IeC {\'a}mide de Trazabilidad de Calibraci\IeC {\'o}n}}{28}{figure.2.25}
-\contentsline {figure}{\numberline {2.26}{\ignorespaces Bloque de ba\IeC {\~n}o seco (Izquierda) y term\IeC {\'o}metro de referencia utilizado en SIGCSA (Derecha)}}{31}{figure.2.26}
-\contentsline {figure}{\numberline {2.27}{\ignorespaces Celdas de punto fijo ITS-90 y Fluke Superterm\IeC {\'o}metro 1594A, ambos utilizados para calibraciones de est\IeC {\'a}ndares primarios.}}{32}{figure.2.27}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Medio isotermo 1, capacidad de 50L a 2100L}}{37}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Medio isotermo 2, capacidad de 2L a 49L}}{37}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Diagrama de flujo del proceso operativo SIGCSA-PO-25}}{39}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Diagrama de Flujo del proceso operativo SIGCSA-PO-14}}{42}{figure.2.4}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Medio isotermo 1, capacidad de 50L a 2100L}}{48}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Medio isotermo 2, capacidad de 2L a 49L}}{48}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de flujo del proceso operativo SIGCSA-PO-25}}{50}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de Flujo del proceso operativo SIGCSA-PO-14}}{53}{figure.3.4}
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Conexi\IeC {\'o}n Sencilla entre Arduino Nano y Sensor de Temperatura DS18B20}}{57}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Terminal de Windows visualizando temperatura capturada por sensor DS18B20, a trav\IeC {\'e}s de comunicaci\IeC {\'o}n serial.}}{59}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Conexi\IeC {\'o}n entre Arduino y LCD ILI9341, utilizando resistencias de 10K en serie.}}{60}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Ejemplo de c\IeC {\'o}mo conectar el m\IeC {\'o}dulo nRF24L01+ con un Arduino nano.}}{65}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Resultado del c\IeC {\'o}digo 4.3, dos Arduino comunic\IeC {\'a}ndose de manera bilateral utilizando los m\IeC {\'o}dulos nRF24L01+.}}{69}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Conexi\IeC {\'o}n de Arduino y HC-05}}{70}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Resultado del c\IeC {\'o}digo ejemplo 4.4, utilizando la aplicaci\IeC {\'o}n "Bluetooth Terminal" en Android.}}{72}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Version 1.1 del Circuito del Prototipo de Medici\IeC {\'o}n de Temperatura.}}{73}{figure.4.8}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Animaci\IeC {\'o}n de inicio de la aplicaci\IeC {\'o}n; tambi\IeC {\'e}n conocido como "Splash Screen"}}{86}{figure.4.9}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Interfaz de la actividad principal}}{87}{figure.4.10}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Interfaz del Fragmento Recientes en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o}}{88}{figure.4.11}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Dise\IeC {\~n}o de interfaz para "ListView" del fragmento recientes y registros}}{89}{figure.4.12}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Interfaz del Fragmento A\IeC {\~n}adir en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o, parte 1}}{90}{figure.4.13}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Interfaz del Fragmento A\IeC {\~n}adir en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o, parte 2}}{91}{figure.4.14}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Dependiendo de la opci\IeC {\'o}n seleccionada, se ajustan los textos en la secci\IeC {\'o}n de "Estado del Sistema"}}{92}{figure.4.15}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Interfaz y dise\IeC {\~n}o del fragmento registros}}{93}{figure.4.16}
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Cuadro de selecci\IeC {\'o}n de fechas y resultados del fragmento registros dependiendo de la fecha}}{93}{figure.4.17}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad bluetooth}}{95}{figure.4.18}
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad detalle}}{96}{figure.4.19}
-\contentsline {figure}{\numberline {4.20}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad detalle}}{97}{figure.4.20}
-\contentsline {figure}{\numberline {4.21}{\ignorespaces Pasos para establecer conexi\IeC {\'o}n con el prototipo}}{99}{figure.4.21}
-\contentsline {figure}{\numberline {4.22}{\ignorespaces Mensaje enviado al usuario por perdida de conexi\IeC {\'o}n con el prototipo}}{99}{figure.4.22}
-\contentsline {figure}{\numberline {4.23}{\ignorespaces Validaci\IeC {\'o}n Antes de Iniciar un Nuevo Ensayo}}{100}{figure.4.23}
-\contentsline {figure}{\numberline {4.24}{\ignorespaces Proceso una vez pulsado el bot\IeC {\'o}n "INICIAR ENSAYO"}}{101}{figure.4.24}
-\contentsline {figure}{\numberline {4.25}{\ignorespaces Proceso para consultar temperatura de una respectiva sonda en un ensayo}}{102}{figure.4.25}
-\contentsline {figure}{\numberline {4.26}{\ignorespaces Proceso para consultar temperatura de una respectiva sonda en un ensayo en un intervalo de fechas}}{103}{figure.4.26}
-\contentsline {figure}{\numberline {4.27}{\ignorespaces Estructura de la Base de Datos}}{108}{figure.4.27}
-\contentsline {figure}{\numberline {4.28}{\ignorespaces Dibujo y dimensiones de la placa o circuito impreso}}{109}{figure.4.28}
-\contentsline {figure}{\numberline {4.29}{\ignorespaces Dibujo y dimensiones de la pantalla LCD y su respectiva placa}}{110}{figure.4.29}
-\contentsline {figure}{\numberline {4.30}{\ignorespaces Prototipo ensamblado, base para el dise\IeC {\~n}o del armaz\IeC {\'o}n}}{110}{figure.4.30}
-\contentsline {figure}{\numberline {4.31}{\ignorespaces Dise\IeC {\~n}o Digital del prototipo (pantalla y circuito impreso)}}{111}{figure.4.31}
-\contentsline {figure}{\numberline {4.32}{\ignorespaces Dibujo del Area del Molde Superior}}{112}{figure.4.32}
-\contentsline {figure}{\numberline {4.33}{\ignorespaces Dibujo detallado de la pantalla LCD}}{112}{figure.4.33}
-\contentsline {figure}{\numberline {4.34}{\ignorespaces Dibujo del Area y bordes del circuito impreso o placa}}{113}{figure.4.34}
-\contentsline {figure}{\numberline {4.35}{\ignorespaces Dibujo de circunferencias para el uso de tornillos en el molde}}{113}{figure.4.35}
-\contentsline {figure}{\numberline {4.36}{\ignorespaces Proceso del Dise\IeC {\~n}o del Molde Superior Parte 1}}{114}{figure.4.36}
-\contentsline {figure}{\numberline {4.37}{\ignorespaces Proceso del Dise\IeC {\~n}o del Molde Superior Parte 1}}{115}{figure.4.37}
-\contentsline {figure}{\numberline {4.38}{\ignorespaces Dise\IeC {\~n}o del molde superior finalizado}}{116}{figure.4.38}
-\contentsline {figure}{\numberline {4.39}{\ignorespaces Proceso del dise\IeC {\~n}o del molde inferior parte 1}}{117}{figure.4.39}
-\contentsline {figure}{\numberline {4.40}{\ignorespaces Proceso del dise\IeC {\~n}o del molde inferior parte 2}}{117}{figure.4.40}
-\contentsline {figure}{\numberline {4.41}{\ignorespaces Dise\IeC {\~n}o del molde inferior finalizado}}{118}{figure.4.41}
-\contentsline {figure}{\numberline {4.42}{\ignorespaces Dise\IeC {\~n}o del final del armaz\IeC {\'o}n}}{118}{figure.4.42}
-\contentsline {figure}{\numberline {4.43}{\ignorespaces Impresora 3D en el proceso de impresi\IeC {\'o}n del armaz\IeC {\'o}n}}{119}{figure.4.43}
-\contentsline {figure}{\numberline {4.44}{\ignorespaces Armaz\IeC {\'o}n del prototipo hecho por una impresora 3D}}{119}{figure.4.44}
-\contentsline {figure}{\numberline {4.45}{\ignorespaces Circuito Impreso Antes y Despues de soldar sus componentes}}{120}{figure.4.45}
-\contentsline {figure}{\numberline {4.46}{\ignorespaces Proceso del ensamblaje del prototipo de medici\IeC {\'o}n de temperatura}}{120}{figure.4.46}
-\contentsline {figure}{\numberline {4.47}{\ignorespaces Prototipo de medici\IeC {\'o}n de temperatura completo en su versi\IeC {\'o}n 1.0}}{121}{figure.4.47}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Conexi\IeC {\'o}n Sencilla entre Arduino Nano y Sensor de Temperatura DS18B20}}{46}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Terminal de Windows visualizando temperatura capturada por sensor DS18B20, a trav\IeC {\'e}s de comunicaci\IeC {\'o}n serial.}}{48}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Conexi\IeC {\'o}n entre Arduino y LCD ILI9341, utilizando resistencias de 10K en serie.}}{49}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Ejemplo de c\IeC {\'o}mo conectar el m\IeC {\'o}dulo nRF24L01+ con un Arduino nano.}}{54}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Resultado del c\IeC {\'o}digo 4.3, dos Arduino comunic\IeC {\'a}ndose de manera bilateral utilizando los m\IeC {\'o}dulos nRF24L01+.}}{58}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Conexi\IeC {\'o}n de Arduino y HC-05}}{59}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Resultado del c\IeC {\'o}digo ejemplo 4.4, utilizando la aplicaci\IeC {\'o}n "Bluetooth Terminal" en Android.}}{60}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Versi\IeC {\'o}n 1.1 del Circuito del Prototipo de Medici\IeC {\'o}n de Temperatura.}}{61}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Animaci\IeC {\'o}n de inicio de la aplicaci\IeC {\'o}n; tambi\IeC {\'e}n conocido como "Splash Screen"}}{74}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Interfaz de la actividad principal}}{75}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Interfaz del Fragmento Recientes en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o}}{76}{figure.3.11}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Dise\IeC {\~n}o de interfaz para "ListView" del fragmento recientes y registros}}{77}{figure.3.12}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Interfaz del Fragmento A\IeC {\~n}adir en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o, parte 1}}{78}{figure.3.13}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Interfaz del Fragmento A\IeC {\~n}adir en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o, parte 2}}{79}{figure.3.14}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Dependiendo de la opci\IeC {\'o}n seleccionada, se ajustan los textos en la secci\IeC {\'o}n de "Estado del Sistema"}}{80}{figure.3.15}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Interfaz y dise\IeC {\~n}o del fragmento registros}}{81}{figure.3.16}
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Cuadro de selecci\IeC {\'o}n de fechas y resultados del fragmento registros dependiendo de la fecha}}{81}{figure.3.17}
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad bluetooth}}{83}{figure.3.18}
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad detalle}}{84}{figure.3.19}
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad detalle}}{85}{figure.3.20}
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Pasos para establecer conexi\IeC {\'o}n con el prototipo}}{87}{figure.3.21}
+\contentsline {figure}{\numberline {3.22}{\ignorespaces Mensaje enviado al usuario por perdida de conexi\IeC {\'o}n con el prototipo}}{87}{figure.3.22}
+\contentsline {figure}{\numberline {3.23}{\ignorespaces Validaci\IeC {\'o}n Antes de Iniciar un Nuevo Ensayo}}{88}{figure.3.23}
+\contentsline {figure}{\numberline {3.24}{\ignorespaces Proceso una vez pulsado el bot\IeC {\'o}n "INICIAR ENSAYO"}}{89}{figure.3.24}
+\contentsline {figure}{\numberline {3.25}{\ignorespaces Proceso para consultar temperatura de una respectiva sonda en un ensayo}}{90}{figure.3.25}
+\contentsline {figure}{\numberline {3.26}{\ignorespaces Proceso para consultar temperatura de una respectiva sonda en un ensayo en un intervalo de fechas}}{91}{figure.3.26}
+\contentsline {figure}{\numberline {3.27}{\ignorespaces Estructura de la Base de Datos}}{96}{figure.3.27}
+\contentsline {figure}{\numberline {3.28}{\ignorespaces Dibujo y dimensiones de la placa o circuito impreso}}{97}{figure.3.28}
+\contentsline {figure}{\numberline {3.29}{\ignorespaces Dibujo y dimensiones de la pantalla LCD y su respectiva placa}}{98}{figure.3.29}
+\contentsline {figure}{\numberline {3.30}{\ignorespaces Prototipo ensamblado, base para el dise\IeC {\~n}o del armaz\IeC {\'o}n}}{98}{figure.3.30}
+\contentsline {figure}{\numberline {3.31}{\ignorespaces Dise\IeC {\~n}o Digital del prototipo (pantalla y circuito impreso)}}{99}{figure.3.31}
+\contentsline {figure}{\numberline {3.32}{\ignorespaces Dibujo del Area del Molde Superior}}{100}{figure.3.32}
+\contentsline {figure}{\numberline {3.33}{\ignorespaces Dibujo detallado de la pantalla LCD}}{100}{figure.3.33}
+\contentsline {figure}{\numberline {3.34}{\ignorespaces Dibujo del Area y bordes del circuito impreso o placa}}{101}{figure.3.34}
+\contentsline {figure}{\numberline {3.35}{\ignorespaces Dibujo de circunferencias para el uso de tornillos en el molde}}{101}{figure.3.35}
+\contentsline {figure}{\numberline {3.36}{\ignorespaces Proceso del Dise\IeC {\~n}o del Molde Superior Parte 1}}{102}{figure.3.36}
+\contentsline {figure}{\numberline {3.37}{\ignorespaces Proceso del Dise\IeC {\~n}o del Molde Superior Parte 1}}{103}{figure.3.37}
+\contentsline {figure}{\numberline {3.38}{\ignorespaces Dise\IeC {\~n}o del molde superior finalizado}}{104}{figure.3.38}
+\contentsline {figure}{\numberline {3.39}{\ignorespaces Proceso del dise\IeC {\~n}o del molde inferior parte 1}}{105}{figure.3.39}
+\contentsline {figure}{\numberline {3.40}{\ignorespaces Proceso del dise\IeC {\~n}o del molde inferior parte 2}}{105}{figure.3.40}
+\contentsline {figure}{\numberline {3.41}{\ignorespaces Dise\IeC {\~n}o del molde inferior finalizado}}{106}{figure.3.41}
+\contentsline {figure}{\numberline {3.42}{\ignorespaces Dise\IeC {\~n}o del final del armaz\IeC {\'o}n}}{106}{figure.3.42}
+\contentsline {figure}{\numberline {3.43}{\ignorespaces Impresora 3D en el proceso de impresi\IeC {\'o}n del armaz\IeC {\'o}n}}{107}{figure.3.43}
+\contentsline {figure}{\numberline {3.44}{\ignorespaces Armaz\IeC {\'o}n del prototipo hecho por una impresora 3D}}{107}{figure.3.44}
+\contentsline {figure}{\numberline {3.45}{\ignorespaces Circuito Impreso Antes y Despues de soldar sus componentes}}{108}{figure.3.45}
+\contentsline {figure}{\numberline {3.46}{\ignorespaces Proceso del ensamblaje del prototipo de medici\IeC {\'o}n de temperatura}}{108}{figure.3.46}
+\contentsline {figure}{\numberline {3.47}{\ignorespaces Prototipo de medici\IeC {\'o}n de temperatura completo en su versi\IeC {\'o}n 1.0}}{109}{figure.3.47}
 \addvspace {10\p@ }
