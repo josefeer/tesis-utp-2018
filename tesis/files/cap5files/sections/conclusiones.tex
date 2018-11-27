@@ -4,16 +4,21 @@
 Con la desarollo de nuestro prototipo y las pruebas realizadas se ha llegado a las siguientes conclusiones:
 
 \begin{itemize}
-	\item Nuestro prototipo cumple con los estándares de la compañía SIGCSA. 
+	
+	\item El prototipo cumple con los estándares de la compañía SIGCSA. 
 	
 	\item Los sensores de temperatura utilizados en el prototipo fueron comparados con termómetros de campo de SIGCSA, los cuales ya tienen un año de uso. Por lo que es necesario nuevamente pruebas de los sensores del prototipo en un plazo de un año.
 	
-	\item La aplicación se conecta por bluetooth al prototipo más hace falta mejorar la comunicación de radiofrecuencia para una comunicación entre 2 o más prototipos de manera confiables.
+	\item Los componentes seleccionados cumplen sus funciones en el prototipo con la excepción del modulo de radiofrecuencia. Para la comunicación entre prototipos hace falta realizar pruebas con otras piezas similares y mejorar el firmware.
+	
+	\item El esquemático del prototipo integró correctamente, en un solo circuito, todos los componentes en una sola placa.
+	
+	\item La aplicación móvil en android cumple con capturar las medidas de temperatura de múltiples prototipos de manera simultanea en una interfaz amigable y con validaciones para no corromper la base de datos.
+	
+	\item El desarrollo de los servicios de segundo plano fue la parte mas compleja dentro del desarrollo de la aplicación. Los servicios en la aplicación tienen que interactuar entre si, deben compartir el mismo bloque de memoria para las capturas de temperatura, no pueden afectar la fluidez de la aplicación y tienen que manejar excepciones y validaciones que haga el usuario o el prototipo en tiempo real.
+	
+	\item La impresión 3D específicamente las impresoras 3D FDM es una tecnología que a pesar de ser accesible en términos económicos. Hoy todavía no es de confianza, se requiere de múltiples impresiones para obtener el modelo deseado debido a variables como temperatura ambiental, motores calibrados y la posición del modelo a la hora de imprimir afectan el resultado final.
 	
 	\item El prototipo puede operar de manera continua con una alimentación a través de USB y por 3 horas utilizando la batería interna.
+	
 \end{itemize}
-
-\clearpage
-
-\mbox{}
-\clearpage
