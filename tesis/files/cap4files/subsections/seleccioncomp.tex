@@ -1,22 +1,22 @@
 \subsection{Selección de Componentes}
 \par 
-Los componentes que hemos seleccionado para nuestro prototipo son la base de este. Al momento de seleccionar estos componentes tomamos en cuenta los factores de dimensión, capacidad de integración con Arduino y costo. Los componentes que utilizaremos para la elaboración de nuestro prototipo son:
+Al momento de seleccionar los componentes se tomó en cuenta factores como dimensión, flexibilidad de integración y costo. Los elementos utilizados para la construcción del modelo son:
 
 \begin{itemize}
-	\item Arduino Nano (Versión 3.0): Utiliza el microcontrolador ATMEGA328P, el cual es el mismo al Arduino Uno, ver figura 1.5, por lo que la documentación es muy amplia para este tipo de placa. Es compacto y puede ser utilizado fácilmente en un breadboard o soldado a una placa, ver figura 1.6. Brinda una memoria de 32KB suficiente para un código amplio, 14 pines digitales, menos 2 pines que son utilizados para transmisión(TX) y recepción (RX), y 8 pines análogos, 6 pueden ser utilizados como digitales, dándonos un total de 18 pines programables para actuar como salidas o entradas de información.
+	\item Arduino nano (Versión 3.0): Utiliza el microcontrolador ATMEGA328P, el cual es el mismo al Arduino Uno, ver figura 1.5, por lo que la documentación es muy amplia para este tipo de placa. Es compacto y puede ser utilizado fácilmente en un breadboard o soldado a una placa, ver figura 1.6. Brinda una memoria de 32KB suficiente para un código amplio, 14 pines digitales, menos 2 pines que son utilizados para transmisión(TX) y recepción (RX), y 8 pines análogos, 6 pueden ser utilizados como digitales, brindando un total de 18 pines programables para actuar como salidas o entradas de información.
 	
-	\item DS18B20: Como se ha mencionado previamente en el marco teórico este trabajo, este sensor viene en una forma de sonda, ver figura 1.18. Es muy versátil y tiene una resolución y error de medición aceptable para mediciones industriales y se puede encontrar en longitudes de hasta 1 metro. Su costo es mínimo, aproximadamente de 3 dólares por sensor. 
+	\item DS18B20: Como se ha mencionado previamente en el marco teórico este trabajo, el sensor viene en una forma de sonda, ver figura 1.18. Es muy versátil y tiene una resolución y error de medición aceptable para mediciones industriales y se puede encontrar en longitudes de hasta 1 metro. Su costo es mínimo, aproximadamente de 3 dólares por sensor. 
 	
-	\item LCD TFT 2.8" ILI9341: Esta pantalla a pesar de tener la que mayor taza de consumo de corriente entre las pantallas candidatas. Ofrece una gran pantalla para poder visualizar de manera eficiente la información. Puede ser alimentada por la salida de 5V de un Arduino nano y cuenta con características para ser utilizada como una pantalla táctil. La pantalla LCD es el elemento que brinda mayor costo a nuestro prototipo, pero es uno de los más importantes.
+	\item LCD TFT 2.8" ILI9341: A pesar de tener la que mayor taza de consumo de corriente entre todas las piezas de su categoría. Ofrece una gran tamaño para poder visualizar de manera eficiente la información. Puede ser alimentada por la salida de 5V de un Arduino nano y cuenta con características para ser utilizada como una pantalla táctil. El LCD es el elemento que brinda mayor costo a nuestro prototipo, pero es uno de los más importantes.
 	
-	\item Modulo nRF24L01+: Módulo con capacidades de comunicación a través de radiofrecuencia, es sencillo de integrar con cualquier placa Arduino y posee una tasa de consumo de corriente eléctrica mínima. Este módulo nos permitirá comunicar múltiples Arduino entre sí para poder enviar la información de los sensores de temperatura.
+	\item Modulo nRF24L01+: Cuenta con capacidades de comunicación a través de radiofrecuencia, es sencillo de comunicar con cualquier placa Arduino y posee una tasa de consumo de corriente mínima. El nRF24L01+ nos permitió comunicar múltiples Arduino entre sí para poder enviar la información de los sensores de temperatura.
 	
-	\item Modulo Bluetooth (HC-05): Módulo que utiliza la tecnología bluetooth para transmisión de información de manera inalámbrica. Este módulo no es necesario utilizarlo en todos los prototipos; ya que, la información es enviada a través de radiofrecuencia. Sin embargo, un prototipo debe enviar la información de todos los demás al smartphone y ahí es donde es necesario este módulo. 
+	\item Modulo Bluetooth (HC-05): Pieza que utiliza la tecnología bluetooth para transmisión de información de manera inalámbrica. No es necesario utilizarlo en todos los prototipos; ya que, la información es enviada a través de radiofrecuencia. Sin embargo, un solo arquetipo es el encargado de enviar la información de todos los demás al teléfono inteligente y ahí su importancia en este proyecto. 
 	
 \end{itemize}
 
 \par \noindent
-Entre los componentes pasivos que utilizaremos son: 
+Entre los componentes pasivos utilizados son: 
 
 \begin{itemize}
 	\item Capacitores Electrolíticos de 10uF
@@ -27,7 +27,7 @@ Entre los componentes pasivos que utilizaremos son:
 \end{itemize}
 
 \par \noindent
-Los capacitores son utilizados para brindar energía eléctrica de manera estable a los componentes, las resistencias para comunicar los distintos componentes como pantalla LCD, sensor y módulos con nuestro Arduino. Por último, utilizaremos un interruptor para brindar alimentación de la fuente de poder a nuestro prototipo y una entrada Jack de 3.5 mm.
+Los capacitores se implementaron para brindar energía eléctrica estable a los componentes, las resistencias para comunicar los distintos componentes como pantalla LCD, sensor y módulos con el Arduino. Por último, se utilizó un interruptor para brindar alimentación de la fuente de poder a nuestro prototipo y una entrada Jack de 3.5 mm.
 
 \par \noindent
-Ahora que tenemos claro porque elegimos ciertos componentes, comenzaremos a probar cada uno de ellos de manera individual.
+Ahora se tiene claro porque elegimos ciertos componentes, se comienza a probar cada uno de ellos de manera individual.

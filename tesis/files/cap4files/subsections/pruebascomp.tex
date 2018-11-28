@@ -1,10 +1,10 @@
 \subsection{Pruebas Individuales de Componentes con Arduino }
 \par \noindent
-Todas las pruebas serán utilizando un Arduino nano; ya que permite una integración sencilla con un breadboard y será el que utilizaremos en nuestro prototipo final. Empezaremos con el sensor de temperatura DS18B20.
+Todas las pruebas fueron realizadas utilizando un Arduino nano; ya que permite un manejo sencillo con un breadboard y será el que utilizaremos en el prototipo final. Se empezó con el sensor de temperatura DS18B20.
 
 \subsubsection{Arduino y DS18B20}
 \par 
-Si leemos detenidamente el datasheet del DS18B20 podemos encontrar que es más complejo que un simple termopar para medir la temperatura. Cuenta en su forma de sonda con distintos circuitos integrados que permiten la fácil integración con Arduino. El DS18B20 utiliza tres alambres. Uno para la alimentación de 5V, otro para tierra y uno de información o data. Este último es conectado a través de una resistencia de 4.7K ohmios en paralelo con una alimentación de 5V y cualquier pin digital de Arduino. 
+Si se lee detenidamente el datasheet del DS18B20 uno se percata que es más complejo que un simple termopar para medir la temperatura. Cuenta en su forma de sonda con distintos circuitos integrados que permiten la fácil integración con Arduino. El DS18B20 utiliza tres alambres. Uno para la alimentación de 5V, otro para tierra y uno de información o data. Este último es conectado a través de una resistencia de 4.7K ohmios en paralelo con una alimentación de 5V y cualquier pin digital de Arduino. 
 
 \begin{figure}[H]
 	\centering
@@ -13,10 +13,10 @@ Si leemos detenidamente el datasheet del DS18B20 podemos encontrar que es más c
 \end{figure}
 
 \par \noindent
-En la figura 3.1 hemos seleccionado el pin digital 10 para enviar la información y vemos como el sensor es conectado a la salida de 5V del Arduino y su respectivo GND, adicional vemos una resistencia de 4.7K entre el cable de DATA del sensor y una conexión al pin 10. 
+En la figura 3.1 se seleccionó el pin digital 10 para enviar la información y se ve como el sensor fue conectado a la salida de 5V del Arduino y su respectivo GND, adicional se ve una resistencia de 4.7K entre el cable de DATA del sensor y una conexión al pin 10. 
 
 \par \noindent
-Ahora utilizando el software platformio, el entorno de desarrollo que utilizaremos para programar la placa Arduino, escribiremos un código de prueba. Para ellos necesitaremos de dos librerías: OneWire \cite{onewire-github} y DallasTemperature \cite{dallas-github}. El código de prueba sería el siguiente: \\
+Ahora utilizando el software platformio, el entorno de desarrollo que se utilizó para programar la placa Arduino, se escribió un código de prueba. Para ellos se necesitaron dos librerías: OneWire \cite{onewire-github} y DallasTemperature \cite{dallas-github}. El código de prueba sería el siguiente: \\
 
 \begin{lstlisting}[language=C++, caption={Código Ejemplo para DS18B20}, captionpos=b]
 #include <Arduino.h>
@@ -45,10 +45,10 @@ delay(1000);
 \end{lstlisting}
 
 \par \noindent
-El código anterior puede ser encontrado como uno de los ejemplos que trae la librería DallasTemperature[30] bajo el nombre "Simple.pde" y puede ser editado por cualquier editor de texto. El código básicamente es crear una instancia de la clase OneWire y esa instancia colocarla como argumento dentro del objeto "sensors". En la función setup (se ejecuta una sola vez). Se inicializa el puerto serial a 9600 baudios y se inicializa el objeto "sensors" de clase DallasTemperatures. En la función loop, se ejecuta toda la función, desde el inicio hasta el final, una y otra vez; hasta que se apague el microcontrolador. Se imprime en la terminal de la computadora y se ejecuta la función "requestTemperatures" que llama todos los posibles DS18B20 que se encuentren en el mismo bus. Por último, se imprime en la terminal de la computadora el resultado de la función "getTempCByIndex" donde si está conectado un DS18B20 retorna la temperatura captura en grados Celsius; en caso tal de no encontrarse ningún DS18B20 en el circuito, el valor retornado es "-127" constante de definida en la librería DallasTemperature.
+El código anterior puede ser encontrado como uno de los ejemplos que trae la librería DallasTemperature[30] bajo el nombre "Simple.pde" y puede ser escrito por cualquier editor de texto. El código básicamente es crear una instancia de la clase OneWire y esa instancia colocarla como argumento dentro del objeto "sensors". En la función setup (se ejecuta una sola vez). Se inicializa el puerto serial a 9600 baudios y se inicializa el objeto "sensors" de clase DallasTemperatures. En la función loop, se ejecuta toda la función, desde el inicio hasta el final, una y otra vez; hasta que se apague el microcontrolador. Se imprime en la terminal de la computadora y se ejecuta la función "requestTemperatures" que llama todos los posibles DS18B20 que se encuentren en el mismo bus. Por último, se imprime en la terminal de la computadora el resultado de la función "getTempCByIndex" donde si está conectado un DS18B20 retorna la temperatura captura en grados Celsius; en caso tal de no encontrarse ningún DS18B20 en el circuito, el valor retornado es "-127" constante de definida en la librería DallasTemperature.
 
 \par \noindent
-Una vez hayamos subido el código a nuestro Arduino, debemos validar que el sensor funcione correctamente, pero ¿cómo? Conectado el Arduino a nuestra computadora utilizaremos el puerto serial de nuestro entorno de desarrollo. Si estamos utilizando el IDE de Arduino, basta con hacer clic en la barra superior la opción "herramientas" y seleccionar "Monitor Serial". Como nosotros estamos utilizando Platformio como IDE, basta con seleccionar en la barra de herramientas "Platformio", la opción "Serial Monitor". Esencialmente lo que hace esa opción es escribir en nuestra terminal el comando "pio device monitor port COM5" y con eso podemos comunicarnos con nuestro Arduino a través de un puerto Serial. En la figura 3.2, podemos visualizar el resultado del código 3.1, en ejecución por el microcontrolador.
+Una vez se subió el código a nuestro Arduino, se debe validar que el sensor funcione correctamente, pero ¿cómo? Conectado el Arduino a una computadora se utiliza el puerto serial del entorno de desarrollo. Si se utiliza el IDE oficial de Arduino, basta con hacer clic en la barra superior la opción "herramientas" y seleccionar "Monitor Serial". Como se implementó Platformio como IDE, basta con seleccionar en la barra de herramientas "Platformio", la opción "Serial Monitor". Esencialmente lo que hace esa opción es escribir en la terminal de comandos "pio device monitor port COM5" y con eso es posible comunicarnos con la placa Arduino a través de un puerto Serial. En la figura 3.2, se visualiza el resultado del código 3.1, en ejecución por el microcontrolador.
 
 \begin{figure}[H]
 	\centering
@@ -57,15 +57,15 @@ Una vez hayamos subido el código a nuestro Arduino, debemos validar que el sens
 \end{figure}
 
 \par \noindent
-Hemos comprobado lo sencillo que es capturar mediciones de temperatura en tiempo real. Sin embargo, no es práctico para el usuario final tener que cargar una computadora, conectar el Arduino y abrir una terminal. Aquí es donde necesitamos la pantalla LCD ILI9348.
+Se comprobó como capturar mediciones de temperatura en tiempo real. Sin embargo, no es práctico para el usuario final tener que cargar una computadora, conectar el Arduino y abrir una terminal. Aquí es se necesita la pantalla LCD ILI9348.
 
 \subsubsection{Arduino y Pantalla LCD ILI9341}
 
 \par 
-Luego de hacer la investigación pertinente se pudo encontrar una guía para utilizar la pantalla LCD con el Arduino \cite{edu8tv}. En ella se detalla que la pantalla LCD tolera 5V; sin embargo, el controlador ILI9341 no. Por lo tanto la guía recomienda utilizar resistencias de 10K en serie con el Arduino para establecer una comunicación satisfactoria.
+Luego de hacer la investigación pertinente encontró una guía para utilizar la pantalla LCD con el Arduino \cite{edu8tv}. En ella se detalla que la pantalla LCD tolera 5V; sin embargo, el controlador ILI9341 no. Por lo tanto la guía recomienda utilizar resistencias de 10K en serie con el Arduino para establecer una comunicación satisfactoria.
 
 \par \noindent
-El controlador de esta pantalla utiliza el bus SPI del Arduino, SPI por sus siglas en inglés es Serial Pheripheral Interface, el cual es un interfaz de bus comúnmente utilizado para enviar información entre microcontroladores, sensores, tarjetas SD y otros microcontroladores. Por lo que las conexiones de nuestra pantalla están definidas hacia los pines digitales 13, 12 y 11 para poder comunicarse con el Arduino.
+El controlador de la pantalla utiliza el bus SPI del Arduino, SPI por sus siglas en inglés es Serial Pheripheral Interface, el cual es un interfaz de bus comúnmente utilizado para enviar información entre microcontroladores, sensores, tarjetas SD y otros dispositivos. Por lo que las conexiones del LCD están definidas hacia los pines digitales 13, 12 y 11 para poder comunicarse con el Arduino.
 
 \begin{figure}[H]
 	\centering
@@ -76,10 +76,10 @@ El controlador de esta pantalla utiliza el bus SPI del Arduino, SPI por sus sigl
 \clearpage
 
 \par \noindent
-Cabe a destacar que el circuito de la figura 3.3, utiliza dos componentes pasivos adicionales a las resistencias. Estos son dos capacitores, uno electrolítico de 10 uF, ayuda a filtrar frecuencias bajas y otro de cerámica de 1nF el cual ayuda a filtrar altas frecuencias. El conjunto de ambos brinda una fuente de poder estable a la pantalla LCD.
+Cabe a destacar que el circuito de la figura 3.3, utiliza dos componentes pasivos adicionales a las resistencias. Estos son dos capacitores, uno electrolítico de 10 uF, ayuda a filtrar frecuencias bajas y otro de cerámica de 1nF el cual ayuda a filtrar altas frecuencias. El conjunto de ambos brinda una fuente de poder estable a el elemento.
 
 \par \noindent
-La pantalla cuando es conectada al Arduino solamente despliega la luz de fondo blanca de la pantalla. Para programar los pixeles a utilizar en la pantalla debemos utilizar dos librerías: Adafruit\_ILI9341\cite{adafruit-lcd} y Adafruit-GFX-Library\cite{adafruit-gfx} ambos de los mismos desarrolladores de Adafruit; Adafruit es una compañía de hardware de código abierto y es uno de los principales contribuidores del proyecto Arduino. Utilizamos uno de los códigos ejemplos que vienen con las librerías para verificar el funcionamiento de la pantalla como en la figura 3.3
+La pantalla cuando es conectada al Arduino solamente despliega la luz de fondo de color blanco. Para programar los pixeles se utilizarón dos librerías: Adafruit\_ILI9341\cite{adafruit-lcd} y Adafruit-GFX-Library\cite{adafruit-gfx} ambos de los mismos desarrolladores de Adafruit; Adafruit es una compañía de hardware de código abierto y es uno de los principales contribuidores del proyecto Arduino. Se utilizó uno de los códigos ejemplos que vienen con las librerías para verificar el funcionamiento del componente como en la figura 3.3
 
 \begin{lstlisting}[language=C++, caption={Código Ejemplo para pantalla LCD ILI9341}, captionpos=b]
 #include <Arduino.h>
@@ -184,29 +184,29 @@ tft.setFont();
 \end{lstlisting}
 
 \par \noindent
-Como podemos apreciar en el código 3.2 todas las funciones hacen referencia a la instancia de la clase "Adafruit\_ILI9341". Básicamente se puede pintar pixel por pixel la pantalla utilizando esta clase; sin embargo, ya hay funciones para realizar figuras geométricas como: "drawLine", "drawCircle", "drawTriangle" y "drawRect". Las funciones principales son la de "fillscreen" la cual rellena la pantalla de un solo color y "println" el cual permite imprimir en la pantalla LCD como si fuese una terminal. En el ejemplo para seleccionar los colores del texto utilizaron números hexadecimales; pero, la librería cuenta con constantes para los colores más comunes.
+En el código 3.2 todas las funciones hacen referencia a la instancia de la clase "Adafruit\_ILI9341". Con ella se puede pintar pixel por pixel la pantalla utilizando esta clase; sin embargo, ya hay funciones para realizar figuras geométricas como: "drawLine", "drawCircle", "drawTriangle" y "drawRect". Las funciones principales son la de "fillscreen" la cual rellena la pantalla de un solo color y "println" el cual permite imprimir en la pantalla LCD como si fuese una terminal. En el ejemplo para seleccionar los colores del texto se utilizaron números hexadecimales; pero, la librería cuenta con constantes para los colores más comunes.
 
 \par \noindent
-Solamente con el sensor de temperatura DS18B20 y la pantalla LCD ILI9341, es suficiente para realizar un prototipo. Ya que entra en la definición de lo que es un termómetro. El valor agregado a nuestro prototipo es la capacidad de poder comunicarse entre varios prototipos de manera simultánea, con el fin que uno de ellos sea el que envié la información de las mediciones de temperatura de todos los prototipos conectados a la aplicación en Android. Esta comunicación debe ser inalámbrica y el módulo de transmisión de radiofrecuencia es el encargado de dicha tarea.
+Los componentes como el sensor de temperatura DS18B20 y la pantalla LCD ILI9341, son suficiente para realizar un termómetro. El valor agregado del proyecto es la capacidad de poder comunicarse prototipos entre si de manera simultánea, con el fin que uno de ellos sea el que envié la información de las mediciones de temperatura de todos los equipos conectados a la aplicación en Android. Esta comunicación debe ser inalámbrica y el módulo de transmisión de radiofrecuencia es el encargado de dicha tarea.
 
 \subsubsection{Arduino y Modulo nRF24L01+}
 \par 
-Durante el desarrollo de nuestro prototipo se llegó a la siguiente pregunta ¿Cómo envió de manera inalámbrica los datos capturados de temperatura de cada uno de los prototipos a mi smartphone? Llegamos a 3 opciones: bluetooth, wi-fi y radiofrecuencia.
+Durante el desarrollo del proyecto se llegó a la siguiente pregunta ¿Cómo enviar de manera inalámbrica los datos capturados de temperatura de cada uno de los prototipos a mi teléfono? Llegamos a 3 opciones: bluetooth, wi-fi y radiofrecuencia.
 
 \begin{enumerate}
-	\item Bluetooth: Rápidamente descartamos utilizar Bluetooth, este estándar de transmisión de información inalámbrica requiere en la mayoría de sus versiones una comunicación exclusivamente de dos dispositivos. Un dispositivo actuando como maestro y el otro como esclavo. Descartando automáticamente la idea es conectar múltiples prototipos con nuestro smartphone. 
+	\item Bluetooth: Rápidamente se descartó utilizar Bluetooth, este estándar de transmisión de información inalámbrica requiere en la mayoría de sus versiones una comunicación exclusivamente de dos dispositivos. Un dispositivo actuando como maestro y el otro como esclavo. Descartando automáticamente la idea es conectar múltiples modelos con un teléfono. 
 	
-	\item Wi-fi: nuestros smartphones tienen antenas de Wi-Fi incorporadas y podemos agregar módulos como el ESP8266, que en realidad es un microcontrolador con capacidades inalámbricas. Sin embargo, estos módulos tienen un consumo moderado a alto de energía, el cual nuestro Arduino no puede satisfacer de manera consistente y disminuiría el tiempo de operación de nuestro prototipo.
+	\item Wi-fi: Los teléfonos tienen antenas de Wi-Fi incorporadas y se puede agregar módulos como el ESP8266, que en realidad es un microcontrolador con capacidades inalámbricas. Sin embargo, estos módulos tienen un consumo moderado a alto de energía, el cual una placa Arduino no puede satisfacer de manera consistente y disminuiría el tiempo de operación del prototipo.
 	
 	
-	\item RadioFrecuencia: Es muy parecido a utilizar un módulo Wi-Fi, es más prácticamente se encuentran en la misma banda de 2.4 GHz. La ventaja de utilizar esta tecnología es que su consumo de energía es mínimo, por lo que puede ser conectado a un Arduino sin problemas. Otra y quizás la más importante es que los módulos nRF24L01+ cuentan con una característica llamada "MultiCeiver", esta característica permite a un solo modulo actuando como receptor comunicarse con hasta 6 otros módulos actuando como transmisión de manera paralela.  La desventaja es que la mayoría de los smartphones no cuentan con un transceptor compatible con radio frecuencia. Teniendo en cuenta esta limitante se designó utilizar esta tecnología para la comunicación entre los prototipos solamente. 
+	\item RadioFrecuencia: Es muy parecido a utilizar un módulo Wi-Fi, es más, se encuentran en la misma banda de 2.4 GHz. La ventaja de utilizar esta tecnología es que su consumo de energía es mínimo, por lo que puede ser conectado a un Arduino sin problemas. Otra y quizás la más importante es que los módulos nRF24L01+ cuentan con una característica llamada "MultiCeiver", esta característica permite a un solo modulo actuando como receptor comunicarse con hasta 6 otros módulos actuando como transmisión de manera paralela.  La desventaja es que la mayoría de los smartphones no cuentan con un transceptor compatible con radio frecuencia. Teniendo en cuenta esta limitante se designó utilizar esta tecnología para la comunicación entre los prototipos solamente. 
 \end{enumerate} 
 
 \par \noindent
-Los prototipos todos contarían con un chip de radio frecuencia nRF24L01+; pero solo un prototipo sería el encargado de enviar la información de todos los otros prototipos a él smartphone. 
+Todos los arquetipos contarían con un chip de radio frecuencia nRF24L01+; pero solo uno sería el encargado de enviar toda la información a el teléfono. 
 
 \par \noindent
-El módulo nRF24L01+ requiere de la alimentación del pin de salida 3.3V del Arduino. Adicional requiere dos pines digitales para que el Arduino asigne si el módulo funcionara como transmisión o recepción. Por último, este módulo utiliza el mismo bus que la pantalla LCD ILI9341, la interfaz de bus que se menciona es SPI y por defecto se encuentra en los pines 13, 11 y 12 de nuestro Arduino. 
+El módulo nRF24L01+ requirió de la alimentación del pin de salida 3.3V de la placa Arduino. Adicional se necesitó dos pines digitales para que el Arduino asigne si el módulo funcionara como transmisión o recepción. Por último, este elemento utilizaba el mismo bus que la pantalla LCD ILI9341, la interfaz de bus que se menciona es SPI y por defecto se encuentra en los pines 13, 11 y 12 de nuestro Arduino. 
 
 \begin{figure}[H]
 	\centering
@@ -215,7 +215,7 @@ El módulo nRF24L01+ requiere de la alimentación del pin de salida 3.3V del Ard
 \end{figure}
 
 \par \noindent
-Para programar este módulo con Arduino es necesario dos librerías: RF24\cite{rf24} y el SPI este último es una de las librerías por defecto que trae Arduino. Dentro de las librerías encontramos un código ejemplo llamado "GettingStarted.ino", es un ejemplo básico de cómo enviar información de un módulo a otro.
+Para programar este módulo con Arduino fue necesario el uso de dos librerías: RF24\cite{rf24} y el SPI este último es una de las librerías por defecto que trae Arduino. Dentro de las librerías se encontró un código ejemplo llamado "GettingStarted.ino", es un ejemplo básico de cómo enviar información de un módulo a otro.
 
 \begin{lstlisting}[language=C++, caption={Codigo Ejemplo para módulo nRF24L01+}, captionpos=b]
 #include <Arduino.h>
@@ -337,18 +337,18 @@ void loop() {
 \end{lstlisting}
 
 \par \noindent
-El código 4.3 permite controlar el módulo nRF24L01+ a través del puerto serial de nuestra computadora. En el código se define el radioNumber, un módulo debe ser 0 y el otro 1, una instancia de la clase RF24 cuyos argumentos son los dos pines digitales del Arduino. Un arreglo de tipo byte que básicamente es la dirección que se le asigna a cada módulo y una variable de rol. 
+El código 4.3 permite controlar el módulo nRF24L01+ a través del puerto serial de una computadora. En el código se define el radioNumber, un módulo debe ser 0 y el otro 1, una instancia de la clase RF24 cuyos argumentos son los dos pines digitales del Arduino. Un arreglo de tipo byte que básicamente es la dirección que se le asigna a cada módulo y una variable de rol. 
 
 \par \noindent
-Al iniciar el programa abrimos el puerto serial con 115200 baudios, esto permite a nuestro Arduino a enviar más caracteres por el puerto serial a que si usáramos 9600. 
+Al iniciar el programa se abre el puerto serial con 115200 baudios, esto permite a el Arduino a enviar más caracteres por el puerto serial a que si usáramos 9600. 
 
-Iniciamos la instancia radio y utilizamos la función "setPALevel" donde programamos el amplificador de poder del módulo, se utiliza como argumento "RF24\_PA\_MAX" el cual es el valor más alto que acepta nuestro módulo. Seguido de una sentencia if, donde dependiendo del Arduino que se esté usando se abre una "tubería de comunicación" con el otro Arduino a través del módulo, una "tubería" se usa para enviar información y otro para recibir.
-
-\par \noindent
-La función loop cuenta de dos partes. Una son las sentencias que indican el rol del Arduino, recordemos que al inicio ambos Arduinos inician con el rol 0. Si un Arduino tiene en la variable "role" el valor 0, se encuentra en el modo de receptor donde espera un mensaje del otro módulo para enviar una respuesta. En caso contrario y la variable "role" tiene el valor 1, entonces el módulo envía un mensaje al otro módulo y espera la respuesta del mensaje enviado. Esto permite una comunicación bilateral y da más control al Arduino de cómo manejar la información.
+Se inicia la instancia radio y utilizamos la función "setPALevel" donde se inidica el amplificador de poder del módulo, se utiliza como argumento "RF24\_PA\_MAX" el cual es el valor más alto que acepta el módulo. Seguido de una sentencia if, donde dependiendo del Arduino que se esté usando se abre una "tubería de comunicación" con el otro Arduino a través del módulo, una "tubería" se usa para enviar información y otro para recibir.
 
 \par \noindent
-La segunda parte básicamente el Arduino está a la espera de recibir a través del puerto serial, terminal de nuestra computadora, los valores 'T' o 'R'. En caso tal que el usuario escriba 't' o 'T', el Arduino le envía un mensaje al usuario que ha cambiado a modo de transmisión o sea el "role" ahora tiene un valor de 1. Si el usuario escribe 'r' o 'R' entonces nuevamente se envía un mensaje para notificar al usuario y se asigna el valor de "role" a 0. En caso de que el usuario ingrese cualquier otra cosa no pasa nada. Recordemos que la función "loop" se ejecutará una y otra vez, mientras que el Arduino tenga una fuente de poder.
+La función loop cuenta de dos partes. Una son las sentencias que indican el rol del Arduino, al inicio ambos Arduinos inician con el rol 0. Si un Arduino tiene en la variable "role" el valor 0, se encuentra en el modo de receptor donde espera un mensaje del otro módulo para enviar una respuesta. En caso contrario y la variable "role" tiene el valor 1, entonces el módulo envía un mensaje al otro módulo y espera la respuesta del mensaje enviado. Esto permite una comunicación bilateral y da más control al Arduino de cómo manejar la información.
+
+\par \noindent
+En la segunda parte el Arduino está a la espera de recibir a través del puerto serial, terminal de una computadora, los valores 'T' o 'R'. En caso tal que el usuario escriba 't' o 'T', el Arduino le envía un mensaje al usuario que ha cambiado a modo de transmisión o sea el "role" ahora tiene un valor de 1. Si el usuario escribe 'r' o 'R' entonces nuevamente se envía un mensaje para notificar al usuario y se asigna el valor de "role" a 0. En caso de que el usuario ingrese cualquier otra cosa no pasa nada. La función "loop" se ejecutará una y otra vez, mientras que el Arduino tenga una fuente de poder.
 
 \begin{figure}[H]
 	\centering
@@ -357,11 +357,11 @@ La segunda parte básicamente el Arduino está a la espera de recibir a través 
 \end{figure}
 
 \par \noindent
-El módulo nRF24L01+ brinda gran valor para nuestro prototipo por su poco precio; sin embargo, la característica que falta es enviar la información de todos los sensores a nuestro smartphone. Aquí es donde necesitamos el módulo bluetooth HC-05.  
+El módulo nRF24L01+ brinda gran valor para al proyecto por su poco precio; sin embargo, la característica que falta es enviar la información de todos los sensores a nuestro teléfono. Aquí es donde se necesita el módulo bluetooth HC-05.  
 
 \subsubsection{Módulo Bluetooth HC-05}
 \par
-El módulo Bluetooth HC-05 es un clásico en los circuitos de Arduino. Hoy en día todavía se sigue utilizando ya que las versiones de bluetooth son retro compatibles. El módulo utiliza la versión de bluetooth 2.0 y hay vasta documentación del módulo en cuestión en la internet. Hay que tomar en cuenta que para trabajar con este módulo hay dos cosas: el módulo necesita una alimentación entre 3.6 a 6 V para funcionar y sus pines de comunicación RXD y TXD lastimosamente no toleran una lógica de 5V; por lo que, hay que utilizar un divisor de voltaje con resistencias. Utilizaremos resistencias de 100K ohmios y 200K ohmios para convertir los 5V del Arduino a 3.3V, esto es solo necesario para transmitir del Arduino al HC-05. Para trasmitir del HC-05 al Arduino no es necesario de convertir de 3.3V a 5V. La conexión del HC-05 con el Arduino sería así:
+El módulo bluetooth HC-05 es un clásico en los circuitos de Arduino. Hoy en día todavía se sigue utilizando ya que las versiones de bluetooth son retro compatibles. El HC-05 utiliza la versión de bluetooth 2.0 y hay vasta documentación del módulo en cuestión en la internet. Hay que tomar en cuenta que para trabajar con este módulo hay dos cosas: la pieza necesita una alimentación entre 3.6 a 6 V para funcionar y sus pines de comunicación RXD y TXD lastimosamente no toleran una lógica de 5V; por lo que, hay que aplicar un divisor de voltaje con resistencias. Se utilizó resistencias de 100K ohmios y 200K ohmios para convertir los 5V del Arduino a 3.3V, esto es solo necesario para transmitir del Arduino al HC-05. Para trasmitir del modulo al Arduino no es necesario de convertir de 3.3V a 5V. La conexión del HC-05 con el Arduino sería así:
 
 \begin{figure}[H]
 	\centering
@@ -370,10 +370,10 @@ El módulo Bluetooth HC-05 es un clásico en los circuitos de Arduino. Hoy en d�
 \end{figure} 
 
 \par \noindent
-Utilizamos los pines A4 y A5, recordemos que estos pines análogos puedes ser utilizados como pines digitales. Adicional un capacitor de 10 uF para brindar una fuente de poder estable.
+Se utilizó los pines A4 y A5, estos pueden ser pines digitales también. Adicional un capacitor de 10 uF para brindar una fuente de poder estable.
 
 \par \noindent
-Ahora para programar el Arduino para comunicarse con el módulo hay que utilizar la librería "SoftwareSerial", es una de las librerías por defecto de Arduino, nos permite utilizar pines digitales como puertos seriales adicionales. Esto permite una comunicación bilateral entre el Arduino y el HC-05. El código ejemplo que hemos desarrollado es muy sencillo.
+Ahora para programar el Arduino para comunicarse con el módulo se utilizó la librería "SoftwareSerial", es una de las librerías por defecto de Arduino, ella permitió utilizar pines digitales como puertos seriales adicionales y comunicar la placa Arduino con el HC-05. El código desarrollado es el siguiente.
 
 
 \begin{lstlisting}[language=C++, caption={Codigo Ejemplo para módulo HC-05}, captionpos=b]
@@ -397,10 +397,10 @@ delay(1000);
 \end{lstlisting} 
 
 \par \noindent
-En el código ejemplo 3.4 se crea una instancia de la clase SoftwareSerial. Esta clase actúa más como una interfaz y crea una comunicación serial en los pines seleccionados. Siendo el primer parámetro el pin de recepción y el segundo parámetro el pin de transmisión. Creamos una variable tipo "string" en el cual simulamos un texto en formato JSON. En la función "setup" iniciamos la comunicación con el puerto serial por defecto del Arduino "Serial" y empezamos también la comunicación a través de los pines 18 y 19 por la instancia "BTSerial". En la función "loop" imprimimos la variable JSON utilizando "BTSerial", donde el HC-05 imprime el valor de la variable JSON. Imprimimos por el puerto serial por defecto solamente para validar que el Arduino está funcionando y por último ejecutamos la función "delay" la cual detiene la ejecución del código por el tiempo que se encuentra en el parámetro de la función, la unidad de la función "delay" es milisegundos. 
+En el código ejemplo 3.4 se crea una instancia de la clase SoftwareSerial. Esta clase actúa más como una interfaz y crea una comunicación serial en los pines seleccionados. Siendo el primer parámetro el pin de recepción y el segundo parámetro el pin de transmisión. Se creó una variable tipo "string" el cual simula un texto en formato JSON. En la función "setup" se inicia la comunicación con el puerto serial por defecto del Arduino "Serial" a través de los pines 18 y 19 por la instancia "BTSerial". En la función "loop" se imprime la variable JSON utilizando "BTSerial", donde el HC-05 imprime el valor de la variable JSON. Se imprime por el puerto serial por defecto solamente para validar que el Arduino está funcionando y por último se ejecuta la función "delay", detiene la ejecución del código por el tiempo que se encuentra en el parámetro de la función, la unidad de la función "delay" es milisegundos. 
 
 \par \noindent
-Para validar que la información se está enviando por bluetooth. Utilizaremos nuestro smartphone durante el desarrollo de este prototipo, el smartphone que usaremos es el Samsung Galaxy S5. Descargaremos la aplicación "Bluetooth Terminal"\cite{btterminal} del Play Store de Android. Esta aplicación es una aplicación de terminal y puede realizar transacciones entre el smartphone y el dispositivo bluetooth\cite{btterminal}, en este caso el HC-05.
+Para validar que la información se está enviando por bluetooth. Se utilizó teléfono de desarrollo, el teléfono utilizado fue el Samsung Galaxy S5. Se descarga la aplicación "Bluetooth Terminal"\cite{btterminal} del Play Store de Android. Esta aplicación es una aplicación de terminal y puede realizar transacciones entre el teléfono y el dispositivo bluetooth\cite{btterminal}, en este caso el HC-05.
 
 
 \begin{figure}[H]
@@ -410,11 +410,11 @@ Para validar que la información se está enviando por bluetooth. Utilizaremos n
 \end{figure}
 
 \par \noindent
-Una vez validado como programar, conectar y manipular correctamente los componentes necesarios para la elaboración de nuestro prototipo. Es momento de integrarlos para el desarrollo de un firmware (código) para el manejo de todos los componentes de manera simultánea por un Arduino. Por lo que es momento de realizar un circuito tentativo de nuestro prototipo.
+Una vez validado como programar, conectar y manipular correctamente los componentes necesarios para la elaboración del prototipo. Es momento de integrarlos para el desarrollo de un firmware (código) para el manejo de todos los componentes de manera simultánea por un Arduino. Por lo que es momento de realizar un circuito tentativo o esquematico del arquetipo.
 
 \subsubsection{Circuito Tentativo}
 \par 
-El circuito tentativo de nuestro dispositivo es una combinación de todos los componentes seleccionados en un solo circuito. El componente principal es el Arduino Nano y es donde subiremos el firmware del dispositivo. El Esquemático del circuito tentativo del prototipo es el siguiente:
+El circuito tentativo del dispositivo es una combinación de todos los componentes seleccionados en un solo circuito. El elemento principal es el Arduino Nano y es donde subiremos el firmware. El Esquemático del prototipo es el siguiente:
 
 \begin{figure}[H]
 	\centering
