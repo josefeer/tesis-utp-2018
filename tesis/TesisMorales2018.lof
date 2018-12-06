@@ -39,53 +39,53 @@
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Conexi\IeC {\'o}n de Arduino y HC-05}}{59}{figure.3.6}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Resultado del c\IeC {\'o}digo ejemplo 4.4, utilizando la aplicaci\IeC {\'o}n "Bluetooth Terminal" en Android.}}{60}{figure.3.7}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Versi\IeC {\'o}n 1.1 del Circuito del Prototipo de Medici\IeC {\'o}n de Temperatura.}}{61}{figure.3.8}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Animaci\IeC {\'o}n de inicio de la aplicaci\IeC {\'o}n; tambi\IeC {\'e}n conocido como "Splash Screen"}}{71}{figure.3.9}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Interfaz de la actividad principal}}{72}{figure.3.10}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Interfaz del Fragmento Recientes en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o}}{73}{figure.3.11}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Dise\IeC {\~n}o de interfaz para "ListView" del fragmento recientes y registros}}{74}{figure.3.12}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Interfaz del Fragmento A\IeC {\~n}adir en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o, parte 1}}{75}{figure.3.13}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Interfaz del Fragmento A\IeC {\~n}adir en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o, parte 2}}{76}{figure.3.14}
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Dependiendo de la opci\IeC {\'o}n seleccionada, se ajustan los textos en la secci\IeC {\'o}n de "Estado del Sistema"}}{77}{figure.3.15}
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Interfaz y dise\IeC {\~n}o del fragmento registros}}{78}{figure.3.16}
-\contentsline {figure}{\numberline {3.17}{\ignorespaces Cuadro de selecci\IeC {\'o}n de fechas y resultados del fragmento registros dependiendo de la fecha}}{78}{figure.3.17}
-\contentsline {figure}{\numberline {3.18}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad bluetooth}}{80}{figure.3.18}
-\contentsline {figure}{\numberline {3.19}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad detalle}}{81}{figure.3.19}
-\contentsline {figure}{\numberline {3.20}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad detalle}}{82}{figure.3.20}
-\contentsline {figure}{\numberline {3.21}{\ignorespaces Pasos para establecer conexi\IeC {\'o}n con el prototipo}}{84}{figure.3.21}
-\contentsline {figure}{\numberline {3.22}{\ignorespaces Mensaje enviado al usuario por perdida de conexi\IeC {\'o}n con el prototipo}}{84}{figure.3.22}
-\contentsline {figure}{\numberline {3.23}{\ignorespaces Validaci\IeC {\'o}n Antes de Iniciar un Nuevo Ensayo}}{85}{figure.3.23}
-\contentsline {figure}{\numberline {3.24}{\ignorespaces Proceso una vez pulsado el bot\IeC {\'o}n "INICIAR ENSAYO"}}{86}{figure.3.24}
-\contentsline {figure}{\numberline {3.25}{\ignorespaces Proceso para consultar temperatura de una respectiva sonda en un ensayo}}{87}{figure.3.25}
-\contentsline {figure}{\numberline {3.26}{\ignorespaces Proceso para consultar temperatura de una respectiva sonda en un ensayo en un intervalo de fechas}}{88}{figure.3.26}
-\contentsline {figure}{\numberline {3.27}{\ignorespaces Estructura de la Base de Datos}}{93}{figure.3.27}
-\contentsline {figure}{\numberline {3.28}{\ignorespaces Dibujo y dimensiones de la placa o circuito impreso}}{94}{figure.3.28}
-\contentsline {figure}{\numberline {3.29}{\ignorespaces Dibujo y dimensiones de la pantalla LCD y su respectiva placa}}{95}{figure.3.29}
-\contentsline {figure}{\numberline {3.30}{\ignorespaces Prototipo ensamblado, base para el dise\IeC {\~n}o del armaz\IeC {\'o}n}}{95}{figure.3.30}
-\contentsline {figure}{\numberline {3.31}{\ignorespaces Dise\IeC {\~n}o Digital del prototipo (pantalla y circuito impreso)}}{96}{figure.3.31}
-\contentsline {figure}{\numberline {3.32}{\ignorespaces Dibujo del Area del Molde Superior}}{97}{figure.3.32}
-\contentsline {figure}{\numberline {3.33}{\ignorespaces Dibujo detallado de la pantalla LCD}}{97}{figure.3.33}
-\contentsline {figure}{\numberline {3.34}{\ignorespaces Dibujo del Area y bordes del circuito impreso o placa}}{98}{figure.3.34}
-\contentsline {figure}{\numberline {3.35}{\ignorespaces Dibujo de circunferencias para el uso de tornillos en el molde}}{98}{figure.3.35}
-\contentsline {figure}{\numberline {3.36}{\ignorespaces Proceso del Dise\IeC {\~n}o del Molde Superior Parte 1}}{99}{figure.3.36}
-\contentsline {figure}{\numberline {3.37}{\ignorespaces Proceso del Dise\IeC {\~n}o del Molde Superior Parte 1}}{100}{figure.3.37}
-\contentsline {figure}{\numberline {3.38}{\ignorespaces Dise\IeC {\~n}o del molde superior finalizado}}{101}{figure.3.38}
-\contentsline {figure}{\numberline {3.39}{\ignorespaces Proceso del dise\IeC {\~n}o del molde inferior parte 1}}{102}{figure.3.39}
-\contentsline {figure}{\numberline {3.40}{\ignorespaces Proceso del dise\IeC {\~n}o del molde inferior parte 2}}{102}{figure.3.40}
-\contentsline {figure}{\numberline {3.41}{\ignorespaces Dise\IeC {\~n}o del molde inferior finalizado}}{103}{figure.3.41}
-\contentsline {figure}{\numberline {3.42}{\ignorespaces Dise\IeC {\~n}o del final del armaz\IeC {\'o}n}}{103}{figure.3.42}
-\contentsline {figure}{\numberline {3.43}{\ignorespaces Impresora 3D en el proceso de impresi\IeC {\'o}n del armaz\IeC {\'o}n}}{104}{figure.3.43}
-\contentsline {figure}{\numberline {3.44}{\ignorespaces Armaz\IeC {\'o}n del prototipo hecho por una impresora 3D}}{104}{figure.3.44}
-\contentsline {figure}{\numberline {3.45}{\ignorespaces Circuito Impreso Antes y Despues de soldar sus componentes}}{105}{figure.3.45}
-\contentsline {figure}{\numberline {3.46}{\ignorespaces Proceso del ensamblaje del prototipo de medici\IeC {\'o}n de temperatura}}{105}{figure.3.46}
-\contentsline {figure}{\numberline {3.47}{\ignorespaces Prototipo de medici\IeC {\'o}n de temperatura completo en su versi\IeC {\'o}n 1.0}}{106}{figure.3.47}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Animaci\IeC {\'o}n de inicio de la aplicaci\IeC {\'o}n; tambi\IeC {\'e}n conocido como "Splash Screen"}}{70}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Interfaz de la actividad principal}}{71}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Interfaz del Fragmento Recientes en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o}}{72}{figure.3.11}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Dise\IeC {\~n}o de interfaz para "ListView" del fragmento recientes y registros}}{73}{figure.3.12}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Interfaz del Fragmento A\IeC {\~n}adir en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o, parte 1}}{74}{figure.3.13}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Interfaz del Fragmento A\IeC {\~n}adir en la aplicaci\IeC {\'o}n y durante el dise\IeC {\~n}o, parte 2}}{75}{figure.3.14}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Dependiendo de la opci\IeC {\'o}n seleccionada, se ajustan los textos en la secci\IeC {\'o}n de "Estado del Sistema"}}{76}{figure.3.15}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Interfaz y dise\IeC {\~n}o del fragmento registros}}{77}{figure.3.16}
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Cuadro de selecci\IeC {\'o}n de fechas y resultados del fragmento registros dependiendo de la fecha}}{77}{figure.3.17}
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad bluetooth}}{79}{figure.3.18}
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad detalle}}{80}{figure.3.19}
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Interfaz y dise\IeC {\~n}o de la actividad detalle}}{81}{figure.3.20}
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Pasos para establecer conexi\IeC {\'o}n con el prototipo}}{83}{figure.3.21}
+\contentsline {figure}{\numberline {3.22}{\ignorespaces Mensaje enviado al usuario por perdida de conexi\IeC {\'o}n con el prototipo}}{83}{figure.3.22}
+\contentsline {figure}{\numberline {3.23}{\ignorespaces Validaci\IeC {\'o}n Antes de Iniciar un Nuevo Ensayo}}{84}{figure.3.23}
+\contentsline {figure}{\numberline {3.24}{\ignorespaces Proceso una vez pulsado el bot\IeC {\'o}n "INICIAR ENSAYO"}}{85}{figure.3.24}
+\contentsline {figure}{\numberline {3.25}{\ignorespaces Proceso para consultar temperatura de una respectiva sonda en un ensayo}}{86}{figure.3.25}
+\contentsline {figure}{\numberline {3.26}{\ignorespaces Proceso para consultar temperatura de una respectiva sonda en un ensayo en un intervalo de fechas}}{87}{figure.3.26}
+\contentsline {figure}{\numberline {3.27}{\ignorespaces Estructura de la Base de Datos}}{92}{figure.3.27}
+\contentsline {figure}{\numberline {3.28}{\ignorespaces Dibujo y dimensiones de la placa o circuito impreso}}{93}{figure.3.28}
+\contentsline {figure}{\numberline {3.29}{\ignorespaces Dibujo y dimensiones de la pantalla LCD y su placa}}{94}{figure.3.29}
+\contentsline {figure}{\numberline {3.30}{\ignorespaces Prototipo ensamblado, base para el dise\IeC {\~n}o del armaz\IeC {\'o}n}}{94}{figure.3.30}
+\contentsline {figure}{\numberline {3.31}{\ignorespaces Dise\IeC {\~n}o Digital del prototipo (pantalla y circuito impreso)}}{95}{figure.3.31}
+\contentsline {figure}{\numberline {3.32}{\ignorespaces Dibujo del Area del Molde Superior}}{96}{figure.3.32}
+\contentsline {figure}{\numberline {3.33}{\ignorespaces Dibujo detallado de la pantalla LCD}}{96}{figure.3.33}
+\contentsline {figure}{\numberline {3.34}{\ignorespaces Dibujo del Area y bordes del circuito impreso o placa}}{97}{figure.3.34}
+\contentsline {figure}{\numberline {3.35}{\ignorespaces Dibujo de circunferencias para el uso de tornillos en el molde}}{97}{figure.3.35}
+\contentsline {figure}{\numberline {3.36}{\ignorespaces Proceso del Dise\IeC {\~n}o del Molde Superior Parte 1}}{98}{figure.3.36}
+\contentsline {figure}{\numberline {3.37}{\ignorespaces Proceso del Dise\IeC {\~n}o del Molde Superior Parte 1}}{99}{figure.3.37}
+\contentsline {figure}{\numberline {3.38}{\ignorespaces Dise\IeC {\~n}o del molde superior finalizado}}{100}{figure.3.38}
+\contentsline {figure}{\numberline {3.39}{\ignorespaces Proceso del dise\IeC {\~n}o del molde inferior parte 1}}{101}{figure.3.39}
+\contentsline {figure}{\numberline {3.40}{\ignorespaces Proceso del dise\IeC {\~n}o del molde inferior parte 2}}{101}{figure.3.40}
+\contentsline {figure}{\numberline {3.41}{\ignorespaces Dise\IeC {\~n}o del molde inferior finalizado}}{102}{figure.3.41}
+\contentsline {figure}{\numberline {3.42}{\ignorespaces Dise\IeC {\~n}o del final del armaz\IeC {\'o}n}}{102}{figure.3.42}
+\contentsline {figure}{\numberline {3.43}{\ignorespaces Impresora 3D en el proceso de impresi\IeC {\'o}n del armaz\IeC {\'o}n}}{103}{figure.3.43}
+\contentsline {figure}{\numberline {3.44}{\ignorespaces Armaz\IeC {\'o}n del prototipo hecho por una impresora 3D}}{103}{figure.3.44}
+\contentsline {figure}{\numberline {3.45}{\ignorespaces Circuito Impreso Antes y Despues de soldar sus componentes}}{104}{figure.3.45}
+\contentsline {figure}{\numberline {3.46}{\ignorespaces Proceso del ensamblaje del prototipo de medici\IeC {\'o}n de temperatura}}{104}{figure.3.46}
+\contentsline {figure}{\numberline {3.47}{\ignorespaces Prototipo de medici\IeC {\'o}n de temperatura completo en su versi\IeC {\'o}n 1.0}}{105}{figure.3.47}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Tabla de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a -10.00 C}}{108}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Gr\IeC {\'a}fica de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a -10.00 C}}{108}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Tabla de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 0.00 C}}{109}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Grafica de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 0.00 C}}{109}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Tabla de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 10.00 C}}{110}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Grafico de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 10.00 C}}{110}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Tabla de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 30.00 C}}{111}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Grafica de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 30.00 C}}{111}{figure.4.8}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Tabla de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 30.00 C}}{112}{figure.4.9}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Grafica de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 30.00 C}}{112}{figure.4.10}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Tabla de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a -10.00 C}}{107}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Gr\IeC {\'a}fica de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a -10.00 C}}{107}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Tabla de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 0.00 C}}{108}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Grafica de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 0.00 C}}{108}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Tabla de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 10.00 C}}{109}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Grafico de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 10.00 C}}{109}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Tabla de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 30.00 C}}{110}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Grafica de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 30.00 C}}{110}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Tabla de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 30.00 C}}{111}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Grafica de Promedios de Temperaturas de prototipo y term\IeC {\'o}metros a 30.00 C}}{111}{figure.4.10}

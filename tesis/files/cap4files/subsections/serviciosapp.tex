@@ -1,15 +1,15 @@
 \subsection{Servicios en Segundo Plano}
 
 \par 
-Según la documentación oficial de Android un servicio es un punto de entrada de propósito general para mantener una aplicación ejecutándose en segundo plano por todo tipo de razones. Es un componente que se ejecuta en segundo plano para realizar operaciones de larga ejecución o para realizar trabajos en procesos remotos. Un servicio no proporciona una interfaz de usuario. Por ejemplo, un servicio puede reproducir música en segundo plano mientras el usuario está en una aplicación diferente, o puede obtener datos a través de la red sin bloquear la interacción del usuario con una actividad. Otro componente, como una actividad, puede iniciar el servicio y permitir que se ejecute o se vincule con él para interactuar con él. En realidad, hay dos servicios semánticos muy distintos que le dicen al sistema cómo administrar una aplicación: los servicios iniciados le dicen al sistema que los mantenga funcionando hasta que se complete su trabajo. Esto podría ser para sincronizar algunos datos en segundo plano o reproducir música incluso después de que el usuario abandone la aplicación.\cite{androidapp}
+Según la documentación oficial de Android un servicio es un punto de entrada de propósito general para mantener una aplicación ejecutándose en segundo plano por todo tipo de razones. Es un código que no se ejecuta en la pantalla principal para realizar operaciones de larga duración o para hacer trabajos en procesos remotos. Un servicio no proporciona una interfaz de usuario. Por ejemplo, un servicio puede reproducir música en en el fondo mientras el usuario está en una aplicación diferente, o puede obtener datos a través de la red sin bloquear la interacción del usuario con una actividad. Otro componente, como una actividad, puede iniciar el servicio y permitir que se ejecute o se vincule con él para interactuar con él. En realidad, hay dos servicios semánticos muy distintos que le dicen al sistema cómo administrar una aplicación: los servicios iniciados le dicen al sistema que los mantenga funcionando hasta que se complete su trabajo. Esto podría ser para sincronizar algunos datos en segundo plano o reproducir música incluso después de que el usuario abandone la aplicación.\cite{androidapp}
 
 \par \noindent
-Mencionado anteriormente nuestra aplicación cuenta con dos servicios que se ejecutan en el segundo plano uno para mantener una comunicación bluetooth entre el prototipo y la aplicación. El otro para capturar las medidas de temperatura de nuestro prototipo. 
+Mencionado anteriormente la aplicación cuenta con dos servicios que se ejecutan en el segundo plano. Uno para mantener una comunicación bluetooth entre el prototipo y la aplicación; mientras que el otro para capturar las medidas de temperatura del prototipo. 
 
 \subsubsection{Servicio Bluetooth}
 
 \par \noindent
-Cuando se está desarrollando una aplicación en Android; ya se encuentran disponible un paquete genérico para utilizar la antena bluetooth de la mayoría del smartphone. Este paquete "android.bluetooth" contiene clases para ciertas tareas individuales para el manejo de la antena. Las clases utilizadas del paquete "android.bluetooth" son:
+Cuando se desarrolla una aplicación en Android; ya se encuentra disponible un paquete genérico para utilizar la antena bluetooth de la mayoría del teléfonos. Este paquete "android.bluetooth" contiene clases para ciertas tareas individuales para el manejo de la antena. Las clases utilizadas del paquete "android.bluetooth" son:
 
 \begin{itemize}
 	\item BluetoothAdapter
@@ -20,23 +20,23 @@ Cuando se está desarrollando una aplicación en Android; ya se encuentran dispo
 \end{itemize}
 
 \par \noindent
-Las clases anteriormente mencionadas contienen funciones para obtener información de un dispositivo bluetooth que se encuentra conectado a nuestro smartphone. Otra función importante es que nos permiten instanciar objetos con información del dispositivo al que nos encontramos conectado, objetos con información de nuestra antena e información del "socket" si hay una conexión activa. 
+Las clases anteriormente mencionadas contienen funciones para obtener información de un dispositivo bluetooth que se encuentra conectado a el teléfono. Otra función importante es que permite instanciar objetos con información del dispositivo al que se está conectado, objetos con información de la antena e información del "socket" si hay una conexión activa. 
 
 \par \noindent
 Un socket es un objeto de software que actúa como un punto final que establece un enlace bidireccional de comunicación de red entre un lado del servidor y un programa del lado del cliente.\cite{socket}
 
 \par \noindent
-En Java, lenguaje utilizado en el desarrollo de aplicaciones en Android, las clases de socket representan la comunicación entre los programas del cliente y del servidor. Las clases de socket manejan la comunicación del lado del cliente, y las clases de socket del servidor manejan la comunicación del lado del servidor.\cite{socket}
+En Java, lenguaje utilizado en el desarrollo de aplicaciones en Android, los socket representan la comunicación entre los programas del cliente y del servidor.\cite{socket}
 
 \par \noindent
-Teniendo claro lo necesario para desarrollar el servicio, debemos desarrollar 3 clases que se comunicaran entre sí.
+Teniendo claro lo necesario para desarrollar el servicio, se desarrollaron 3 clases que se comunican entre sí.
 
 \begin{itemize}
 	\item BTAsynk: Es la clase que se encargara de establecer una comunicación con el dispositivo bluetooth deseado. Se encarga de guardar información de la conexión en memoria y valida si la conexión es exitosa.
 	
-	\item BTsocketHandler: Es una clase publica pero sus atributos y métodos son estáticos. Esto significa que los valores asignados y retornados de esta clase son compartidas en todas las instancias de ella. Esto es importante porque garantiza que no hallan fugas de memoria en nuestra aplicación. En ella se guarda la información obtenida por BTAsynk para ser utilizadas después.
+	\item BTsocketHandler: Es una clase publica pero sus atributos y métodos son estáticos. Esto significa que los valores asignados y retornados de esta clase son compartidas en todas las instancias de ella. Esto es importante porque garantiza que no hallan fugas de memoria en la aplicación. En ella se guarda la información obtenida por BTAsynk para ser utilizadas después.
 	
-	\item BTservice: Una vez BTAsynk ha establecido una conexión correctamente, esta clase hace llamados a atributos de BTsocketHandler para validar que seguimos conectados al dispositivo bluetooth y envía esa información del segundo plano al primer plano de nuestra aplicación. Esto es gracias a que BTservice hereda atributos y métodos de la clase IntentService.
+	\item BTservice: Una vez BTAsynk ha establecido una conexión correctamente, esta clase hace llamados a atributos de BTsocketHandler para validar que se esta conectado al equipo bluetooth y envía esa información del segundo plano al primer plano de la aplicación. Esto es gracias a que BTservice hereda atributos y métodos de la clase IntentService.
 	
 \end{itemize}
 
@@ -47,7 +47,7 @@ Según la documentación oficial de Android la clase IntentService es una clase 
 Este patrón de "procesador de cola de trabajo" se usa comúnmente para descargar tareas del hilo principal de una aplicación. La clase IntentService existe para simplificar este patrón y cuidar la mecánica de la aplicación. \cite{intentservice}
 
 \par \noindent
-En conclusión la clase BTAsynk es la encargada de establecer una comunicación bluetooth con el prototipo. Si la conexión es exitosa entonces BTAsynk envía información del dispositivo y socket activo a la clase BTSocketHandler y por último inicia la clase BTService. La clase BTService entra en un ciclo while donde transformará las medidas de temperatura enviadas por el prototipo a un objeto JSON y el objeto JSON es enviado a la clase BTsocketHandler. Adicional durante este ciclo BTService estará enviando un mensaje a la actividad principal indicando que la conexión esta activa. En la actividad principal mientras BTService se encuentre enviando el mensaje, el icono del botón bluetooth será un gancho como en la imagen 4.24. Cuando el mensaje ya no sea recibido entonces enviara la notificación al usuario que la conexión con el prototipo se a caído como en la imagen 4.22. Los códigos para las clases anteriormente mencionadas se encuentran en el Anexo 2.
+Por ende la clase BTAsynk es la encargada de establecer una comunicación bluetooth con el arquetipo. Si la conexión es exitosa entonces BTAsynk envía información del dispositivo y socket activo a la clase BTSocketHandler y por último inicia la clase BTService. La clase BTService entra en un ciclo while donde transformará las medidas de temperatura enviadas por el prototipo a un objeto JSON y el objeto JSON es enviado a la clase BTsocketHandler. Adicional durante este ciclo BTService estará enviando un mensaje a la actividad principal indicando que la conexión esta activa. En la actividad principal mientras BTService se encuentre enviando el mensaje, el icono del botón bluetooth será un gancho como en la imagen 4.24. Cuando el mensaje ya no sea recibido entonces enviara la notificación al usuario que la conexión con el equipo se a caído como en la imagen 4.22. Los códigos para las clases anteriormente mencionadas se encuentran en el Anexo 2.
 
 \subsubsection{Servicio de Registro de Temperatura}
 
@@ -55,13 +55,13 @@ En conclusión la clase BTAsynk es la encargada de establecer una comunicación 
 El Servicio de Registro de Temperatura es el encargado de convertir el objeto JSON de la clase BTSocketHandler a consultas de SQL para guardarlas en la base de datos SQLite de nuestro dispositivo.
 
 \par \noindent
-SQLite es una librería en proceso que implementa un motor de base de datos SQL transaccional independiente, sin servidor y de configuración cero. El código para SQLite es de dominio público y, por lo tanto, es gratuito para cualquier uso, comercial o privado. SQLite es la base de datos más implementada del mundo con más aplicaciones de las que podemos contar, incluidos varios proyectos de alto perfil.SQLite es un motor de base de datos SQL incorporado. A diferencia de la mayoría de las otras bases de datos SQL, SQLite no tiene un proceso de servidor por separado. SQLite lee y escribe directamente en archivos de disco ordinarios. Una base de datos SQL completa con múltiples tablas, índices, disparadores y vistas, está contenida en un solo archivo de disco.\cite{sqlite}
+SQLite es una librería en proceso que implementa un motor de base de datos SQL transaccional independiente, sin servidor y de configuración cero. El código es de dominio público y, por lo tanto, es gratuito para cualquier uso, comercial o privado. Es la base de datos más implementada del mundo con más aplicaciones de las que podemos contar, incluidos varios proyectos de alto perfil. Es un motor de base de datos SQL incorporado. A diferencia de la mayoría de las otras bases de datos SQL, SQLite no tiene un proceso de servidor por separado. El lee y escribe directamente en archivos de disco ordinarios. Una base de datos SQL completa con múltiples tablas, índices, disparadores y vistas, está contenida en un solo archivo de disco.\cite{sqlite}
 
 \par \noindent
 Anteriormente se había mencionado que la clase BTSocketHandler es estática para que sus instancias compartan la misma información. Esto es esencial debido a que para realizar inserciones en la base de datos en tiempo real es necesario que el servicio bluetooth y el servicio registro de temperatura se encuentren trabajando simultáneamente en el segundo plano, sin afectar el rendimiento de la aplicación y la clase BTSocketHandler actuando como un puente entre ambos servicios.
 
 \par \noindent
-En Android no hay clases para crear o manejar una base de datos; sin embargo, el paquete "android.database" nos brinda las clases necesarias para nosotros desarrollar una sola clase que se encargue del manejo de la base de datos de nuestra aplicación. Vamos a necesitar del paquete "android.database" las siguientes clases:
+En Android no hay clases para crear o manejar una base de datos; sin embargo, el paquete "android.database" brinda las clases necesarias para desarrollar un solo codigo que se encargue del manejo de la base de datos de la aplicación. Vamos a necesitar del paquete "android.database" las siguientes clases:
 
 \begin{itemize}
 	
@@ -74,16 +74,16 @@ En Android no hay clases para crear o manejar una base de datos; sin embargo, el
 \end{itemize} 
 
 \par \noindent
-Con estas clases podemos desarrollar una clase que es la utilizaremos en nuestra aplicación para crear la base de datos y realizar las diferentes consultas e inserciones a la base de datos. El Código de esta clase llamada "DatabaseHelper" se encuentra en el Anexo 3.
+Con estas clases se desarolló una clase para crear la base de datos y realizar las diferentes consultas e inserciones a la base de datos. El Código de esta clase llamada "DatabaseHelper" se encuentra en el Anexo 3.
 
 \par \noindent
-Para iniciar el servicio basta con presionar el botón "INICIAR ENSAYO" del fragmento añadir. Automáticamente el fragmento añadir envía los datos de su interfaz como los campos de textos y los parámetros seleccionados por el usuario. Luego el servicio obtiene esos valores y creamos una instancia de la clase "DatabaseHelper" la cual si el fichero de la base de datos no se ha creado la crea automáticamente. 
+Para iniciar el servicio basta con presionar el botón "INICIAR ENSAYO" del fragmento añadir. Automáticamente el fragmento añadir envía los datos de su interfaz como los campos de textos y los parámetros seleccionados por el usuario. Luego el servicio obtiene esos valores y se crea una instancia de la clase "DatabaseHelper" la cual si el fichero de la base de datos no se ha creado la crea automáticamente. 
 
 \par \noindent
-Los valores del fragmento añadir son ordenados para realizar la primera inserción en la base de datos. Si esta primera inserción es válida entonces preguntamos el valor del tiempo de estabilización seleccionado en el fragmento añadir. Si el valor es diferente de 0 entonces utilizamos el comando "SystemClock.sleep" para detener la ejecución del servicio por el tiempo que se solicitó.
+Los valores del fragmento añadir son ordenados para realizar la primera inserción en la base de datos. Si esta primera inserción es válida entonces se pregunta el valor del tiempo de estabilización seleccionado en el fragmento añadir. Si el valor es diferente de 0 entonces se utiliza el comando "SystemClock.sleep" para detener la ejecución del servicio por el tiempo que se solicitó.
 
 \par \noindent
-Luego dependiendo del tiempo de tipo de ensayo (Isotermo 1, Isotermo 2 o Calibración con Patrón) entonces seleccionamos la tabla y los valores a insertar. Una vez seleccionados el servicio entra en un ciclo for donde se estará llamando el objeto JSON de la clase BTsocketHandler para realizar las inserciones correspondientes, el ciclo for se ejecutará por el tiempo que estipulo el usuario y cada vez que se realice un ciclo se envía el porcentaje del ensayo hasta el momento al "progressbar" del fragmento añadir.
+Luego dependiendo del tiempo de tipo de ensayo (Isotermo 1, Isotermo 2 o Calibración con Patrón) se selecciona la tabla y los valores a insertar. Una vez seleccionados el servicio entra en un ciclo for donde se llama a el objeto JSON de la clase BTsocketHandler para realizar las inserciones correspondientes, el ciclo for se ejecutará por el tiempo que estipulo el usuario y cada vez que se realice un ciclo se envía el porcentaje del ensayo hasta el momento al "progressbar" del fragmento añadir.
 
 \par \noindent
 Por último se valida que el usuario no presiono el botón cancelar y se actualiza la primera inserción realizada en el servicio.
