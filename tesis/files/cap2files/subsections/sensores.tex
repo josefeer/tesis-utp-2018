@@ -12,7 +12,10 @@ Un sensor es un dispositivo capaz de detectar magnitudes físicas o químicas, l
 \par \noindent
 Los sensores se pueden clasificar en función de los datos de salida en: digitales y analógicos\cite{sensores-arduino}.
 
-\subsubsection{Características de los Sensores \cite{sensores-wiki}}
+\subsubsection{Características de los Sensores}
+
+\par \noindent
+Las características son\cite{sensores-wiki}:
 
 \begin{itemize}
 	
@@ -32,12 +35,12 @@ Los sensores se pueden clasificar en función de los datos de salida en: digital
 	
 	\item Derivas: son otras magnitudes, aparte de la medida como magnitud de entrada, que influyen en la variable de salida. Por ejemplo, pueden ser condiciones ambientales, como la humedad, la temperatura u otras como el envejecimiento (oxidación, desgaste, etc.) del sensor.
 	
-	\item Repetitividad: error esperado al repetir varias veces la misma medida.
+	\item Repetitividad: error esperado al repetir varias veces la misma medida.\cite{sensores-wiki}
 	
 \end{itemize}
 
 \par \noindent
-Debido a que solamente la magnitud física que nos interesa para nuestro proyecto es la temperatura. Tomamos en cuenta los posibles candidatos para utilizar como sensor de temperatura en el prototipo, pero primero se presentará la definición formal de temperatura y los diversos termómetros existentes
+Debido a que solamente la magnitud física importante para el proyecto es la temperatura. Se tomarón en cuenta los posibles candidatos para utilizar como sensor de temperatura en el dispositivo, pero primero se presentará la definición formal de temperatura y los diversos termómetros existentes
 
 \subsubsection{Termómetros}
 
@@ -53,13 +56,13 @@ Inicialmente se fabricaron aprovechando el fenómeno de la dilatación, por lo q
 	\caption{Ejemplos de diferentes tipos de termómetros}
 \end{figure}
 
-\subsubsection{Escalas de temperatura \cite{termometro}}
+\subsubsection{Escalas de temperatura}
 
 \par 
-La escala más usada en la mayoría de los países del mundo es la Celsius (\textdegree{}C) en honor a Anders Celsius (1701-1744) que se llamó centígrado hasta 1948. En esta escala, el cero (0 \textdegree{}C) y los cien (100 \textdegree{}C) grados corresponden respectivamente a los puntos de congelación y de ebullición del agua, ambos a la presión de 1 atmósfera.
+La escala más usada en la mayoría de los países del mundo es la Celsius (\textdegree{}C) en honor a Anders Celsius (1701-1744) que se llamó centígrado hasta 1948. En esta escala, el cero (0 \textdegree{}C) y los cien (100 \textdegree{}C) grados corresponden respectivamente a los puntos de congelación y de ebullición del agua, ambos a la presión de 1 atmósfera.\cite{termometro}
 
 \par \noindent 
-Otras escalas termométricas son:
+Otras escalas termométricas son:\cite{termometro}
 
 \begin{itemize}
 	
@@ -72,12 +75,12 @@ Otras escalas termométricas son:
 	Es la escala de temperatura del Sistema Internacional de Unidades. Aunque la magnitud de una unidad Kelvin (K) coincide con un grado Celsius (\textdegree{}C), el cero se ha fijado en el cero absoluto a -273,15 \textdegree{}C y es inalcanzable según el tercer principio de la termodinámica.
 \end{itemize}
 
-\subsubsection{Tipos de termómetros \cite{termometro}}
+\subsubsection{Tipos de termómetros}
 
 \begin{itemize}
-	\item Termómetro de mercurio: es un tubo de vidrio sellado que contiene mercurio, cuyo volumen cambia con la temperatura de manera uniforme. Este cambio de volumen se aprecia en una escala graduada. El termómetro de mercurio fue inventado por Gabriel Fahrenheit en el año 1714. Ver figura 1.15 (A)
+	\item Termómetro de mercurio: es un tubo de vidrio sellado que contiene mercurio, cuyo volumen cambia con la temperatura de manera uniforme. Este cambio de volumen se aprecia en una escala graduada. El termómetro de mercurio fue inventado por Gabriel Fahrenheit en el año 1714. En la actualidad este tipo de termómetro ya no se fabrica\cite{termometro} Ver figura 1.15 (A)
 	
-	\item Pirómetros:  termómetros para altas temperaturas, se utilizan en fundiciones, fábricas de vidrio, hornos para cocción de cerámica, etc. Existen varios tipos según su principio de funcionamiento:
+	\item Pirómetros:  termómetros para altas temperaturas, se utilizan en fundiciones, fábricas de vidrio, hornos para cocción de cerámica, etc.\cite{termometro} Existen varios tipos según su principio de funcionamiento:
 	
 	\begin{itemize}
 		
@@ -120,7 +123,7 @@ Otras escalas termométricas son:
 \end{itemize}
 
 \par \noindent
-Una vez que se ha dejado claro el concepto de termómetro y sus tipos, hablaremos de los sensores de temperatura que podemos encontrar en la plataforma Arduino.
+Dejado claro el concepto de termómetro y sus tipos, se procedió a investigar los sensores de temperatura que se pueden encontrar en la plataforma Arduino.
 
 \subsubsection{Sensores de Temperatura}	
 
@@ -165,5 +168,5 @@ Una vez que se ha dejado claro el concepto de termómetro y sus tipos, hablaremo
 \end{itemize}
 
 \par \noindent
-Luego de haber realizado la investigación sobre las diversas tecnologías existentes que podrían ser utilizadas en la elaboración de nuestro prototipo, se deberá tener en consideración el lugar en el que serán colocados nuestros componentes, es por ellos que se toma en consideración la impresión 3D, la cual permite crear modelos físicos a partir de un modelo realizado por computadora. A continuación, se tratará más a fondo la impresión 3D.
+Luego de haber realizado la investigación sobre las diversas tecnologías existentes que podrían ser utilizadas en la elaboración de del arquetipo, se debió tener en consideración el lugar en el que fueron colocados los componentes, es por ellos que se toma en consideración la impresión 3D, la cual permite crear modelos físicos a partir de un modelo realizado por computadora. A continuación, se tratará más a fondo la impresión 3D.
 

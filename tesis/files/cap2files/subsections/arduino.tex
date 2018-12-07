@@ -27,13 +27,13 @@ Con los años, Arduino ha sido el cerebro de miles de proyectos, desde objetos c
 	\caption{Placa Arduino Nano}
 \end{figure}
 
-\subsubsection{Componentes Pasivos \cite{artofelectronics}}
+\subsubsection{Componentes Pasivos }
 
 \par \noindent
-Los componentes pasivos son los encargados de la conexión entre los diferentes componentes activos, asegurando la transmisión de las señales eléctricas o modificando su nivel. Los componentes pasivos son:
+Los componentes pasivos son los encargados de la conexión entre los diferentes componentes activos, asegurando la transmisión de las señales eléctricas o modificando su nivel.\cite{artofelectronics} Los componentes pasivos son:
 
 \begin{itemize}
-	\item Resistencias: Son usadas para establecer corrientes de operación y niveles de señal. Las resistencias se utilizan en los circuitos de alimentación para reducir los voltajes al disipar la potencia, medir las corrientes y descargar los capacitores después de que se desconecta la energía. Una resistencia está hecha de elementos conductores (carbono, o una película delgada de metal o carbono, o un cable de baja conductividad), con un cable o contactos en cada extremo. Las resistencias se caracterizan por su resistencia y es definido por la ley de Ohm. 
+	\item Resistencias: Son usadas para establecer corrientes de operación y niveles de señal. Las resistencias se utilizan en los circuitos de alimentación para reducir los voltajes al disipar la potencia, medir las corrientes y descargar los capacitores después de que se desconecta la energía. Una resistencia está hecha de elementos conductores (carbono, o una película delgada de metal o carbono, o un cable de baja conductividad), con un cable o contactos en cada extremo. Las resistencias se caracterizan por su resistencia y es definido por la ley de Ohm.\cite{artofelectronics} 
 	$$R = V/I$$
 	Donde R es de Resistencia, V de Voltaje e I de corriente.
 \end{itemize}
@@ -45,7 +45,7 @@ Los componentes pasivos son los encargados de la conexión entre los diferentes 
 \end{figure}
 
 \begin{itemize}
-	\item Capacitor: Los capacitores esencialmente almacenan energía, pero es principalmente utilizado en corriente directa para filtrar picos de voltaje provenientes de la fuente de la fuente de poder. Un capacitor (el nombre antiguo era condensador) es un dispositivo que tiene dos cables que sobresalen y tiene la propiedad: 
+	\item Capacitor: Los capacitores esencialmente almacenan energía, pero es principalmente utilizado en corriente directa para filtrar picos de voltaje provenientes de la fuente de la fuente de poder.\cite{artofelectronics} Un capacitor (el nombre antiguo era condensador) es un dispositivo que tiene dos cables que sobresalen y tiene la propiedad: 
 	$$Q = CV$$
 	Donde Q es carga almacenada en coulomb, C la capacitancia en faradios y V es la diferencia de potencia en voltios.
 \end{itemize}
@@ -57,7 +57,7 @@ Los componentes pasivos son los encargados de la conexión entre los diferentes 
 \end{figure}
 
 \begin{itemize}
-	\item Inductor: Los inductores están estrechamente relacionados con los capacitores: la tasa de cambio de corriente en un inductor es proporcional al voltaje aplicado a través de él (para un condensador es al revés, la tasa de cambio de voltaje es proporcional a la corriente a través de él). La ecuación de definición para un inductor es:
+	\item Inductor: Los inductores están estrechamente relacionados con los capacitores: la tasa de cambio de corriente en un inductor es proporcional al voltaje aplicado a través de él (para un condensador es al revés, la tasa de cambio de voltaje es proporcional a la corriente a través de él).\cite{artofelectronics} La ecuación de definición para un inductor es:
 	
 	$$V = L\frac{dl}{dt}$$
 	
@@ -67,7 +67,7 @@ Los componentes pasivos son los encargados de la conexión entre los diferentes 
 	inductor hace que la corriente se eleve como una rampa (en comparación con un capacitor, en el que una corriente constante causa el voltaje subir como una rampa); l $V$ a través de 1 $H$ produce una corriente que aumenta a 1 amperio por segundo.
 	
 	\par \noindent
-	Al igual que con los capacitores, la energía invertida en el aumento de la corriente en un inductor se almacena internamente, aquí en la forma de campos magnéticos.
+	Al igual que con los capacitores, la energía invertida en el aumento de la corriente en un inductor se almacena internamente, aquí en la forma de campos magnéticos.\cite{artofelectronics}
 	
 \end{itemize}
 
@@ -118,8 +118,8 @@ La alta velocidad de datos de aire combinada con dos modos de ahorro de energía
 diseños de energía\cite{nrf}.
 
 \par \noindent
-Nuestro prototipo debe ser capaz de visualizar la información capturada y enviarla a nuestra aplicación móvil. 
-Los módulos previamente mencionados son los encargados de la comunicación inalámbrica y una pantalla LCD es la encargada de reflejar la información en tiempo real al usuario final; no obstante, primero debemos tener una lista de pantallas LCD.
+El prototipo debe ser capaz de visualizar la información capturada y enviarlo a la aplicación móvil. 
+Los módulos previamente mencionados son los encargados de la comunicación inalámbrica y una pantalla es la encargada de reflejar la información en tiempo real al usuario final; no obstante, primero debemos tener una lista de LCDs.
 
 \subsubsection{Pantallas LCD}
 
